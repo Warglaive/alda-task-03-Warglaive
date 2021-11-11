@@ -11,7 +11,6 @@ public class Queue<E> implements sortingservice.Queue<E> {
         this.firstNode = null;
         this.lastNode = null;
         this.size = 0;
-        System.out.println();
     }
 
 
