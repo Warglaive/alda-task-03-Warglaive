@@ -21,7 +21,19 @@ public class Queue<E> implements sortingservice.Queue<E> {
      */
     @Override
     public void put(E item) {
+        //create new node containing the item
         QueueNode<E> tempNode = new QueueNode<>(item);
+        // If queue is empty, then new node is start and last both
+        if (isEmpty()) {
+            /*this.firstNode = this.lastNode = tempNode;*/
+            this.firstNode = this.lastNode;
+            this.lastNode = tempNode;
+            return;
+        }
+        // Add the new node at the end of queue and change last
+        this.lastNode.next = tempNode;
+        this.lastNode = tempNode;
+        //increment size
         this.size++;
     }
 
