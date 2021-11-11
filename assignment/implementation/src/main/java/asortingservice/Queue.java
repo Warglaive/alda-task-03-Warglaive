@@ -48,9 +48,13 @@ public class Queue<E> implements sortingservice.Queue<E> {
         if (isEmpty()) {
             return null;
         }
-        // Store previous front and move front one node ahead
+        // Store previous start and move start one node ahead
         QueueNode<E> tempNode = this.firstNode;
         this.firstNode = this.firstNode.next;
+        // If front becomes NULL, then change rear also as NULL
+        if (this.firstNode == null) {
+            this.lastNode = null;
+        }
     }
 
     @Override
