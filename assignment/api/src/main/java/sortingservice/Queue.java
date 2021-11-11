@@ -15,25 +15,24 @@ package sortingservice;
  * because it makes checking for ordered-ness particularly easy with assertJ.
  * </p>
  *
- * 
- * 
+ *
+ *
  * <p>
  * The sorter may choose the best queue implementation for its sort strategy.
  * Note that singly-linked queues can be more space efficient than doubly linked
  * queues.</p>
  *
- * @author Pieter van den Hombergh {@code pieter.van.den.hombergh@gmail.com}
  * @param <E> elements in queue.
+ * @author Pieter van den Hombergh {@code pieter.van.den.hombergh@gmail.com}
  */
 public interface Queue<E> extends Iterable<E> {
-
+  
     /**
      * Add element to queue.
      *
      * @param t element to add
-     *
      */
-    void put( E t );
+    void put(E t);
 
     /**
      * Remove element of this queue and return it.
