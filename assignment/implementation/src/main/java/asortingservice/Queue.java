@@ -55,6 +55,9 @@ public class Queue<E> implements sortingservice.Queue<E> {
         if (this.firstNode == null) {
             this.lastNode = null;
         }
+        //TODO: may be wrong
+        //return
+        return tempNode.item;
     }
 
     @Override
