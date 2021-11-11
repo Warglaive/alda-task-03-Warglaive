@@ -3,15 +3,26 @@ package asortingservice;
 import java.util.Iterator;
 
 public class Queue<E> implements sortingservice.Queue<E> {
+    QueueNode<E> firstNode;
+    QueueNode<E> lastNode;
+    int size;
+
+    public Queue() {
+        this.firstNode = null;
+        this.lastNode = null;
+        this.size = 0;
+    }
+
 
     /**
      * enqueue
      *
-     * @param t element to add
+     * @param item element to add
      */
     @Override
-    public void put(E t) {
-
+    public void put(E item) {
+        QueueNode<E> tempNode = new QueueNode<>(item);
+        this.size++;
     }
 
     /**
@@ -26,12 +37,12 @@ public class Queue<E> implements sortingservice.Queue<E> {
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return this.size == 0;
     }
 
     @Override
     public long size() {
-        return 0;
+        return this.size;
     }
 
     @Override
