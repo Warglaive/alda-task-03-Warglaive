@@ -33,6 +33,6 @@ public class SortingServices implements SortingServiceFactory {
     @Override
     public <T> Sorter<T> createSorter(SortKind kind, Comparator<T> comparator) {
         //TODO
-        this.sorterMap.get(kind).apply(comparator);
+        return this.sorterMap.get(kind).apply(comparator);
     }
 }
