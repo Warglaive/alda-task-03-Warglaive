@@ -18,4 +18,6 @@ public interface Sorter<T> {
      * @return the queue with the elements in non-descending order as per the comparator.
      */
     Queue<T> sort( Queue<T> q );
+
+    int compareTo(T b);
 }

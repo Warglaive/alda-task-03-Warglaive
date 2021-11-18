@@ -20,7 +20,7 @@ public class SortingServices implements SortingServiceFactory {
 
     //TODO: Add more sorter kinds when ready
 
-    private SortingServices() {
+    public SortingServices() {
         //this.queueMap.put(SortKind.INSERTION, () -> new QueueImpl());
     }
 
