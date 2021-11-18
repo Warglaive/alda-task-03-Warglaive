@@ -1,3 +1,4 @@
+/*
 package asortingservice;
 
 import org.junit.jupiter.api.Test;
@@ -26,14 +27,16 @@ class CountingComparatorTest {
         assertThat(sortedQueue).isOrderedAccoridingTo(comp);
     }
 
-    /**
+    */
+/**
      * @param queue
      * @param n
      * @return filled queue
-     */
+     *//*
+
     Queue<SortKind> fillRandom(Queue<SortKind> queue, int n) {
         for (int i = 0; i < n; i++) {
                 queue.put();
         }
     }
-}
+}*/

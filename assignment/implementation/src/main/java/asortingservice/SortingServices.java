@@ -25,14 +25,14 @@ public class SortingServices implements SortingServiceFactory {
     }
 
     @Override
-    public Queue createPreferredQueue(SortKind forSorter) {
+    public <T> Queue<T> createPreferredQueue(SortKind forSorter) {
+        return this.queueMap.get(forSorter).get();
         //TODO
-        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     @Override
     public <T> Sorter<T> createSorter(SortKind kind, Comparator<T> comparator) {
         //TODO
-        throw new UnsupportedOperationException("Not supported yet.");
+        this.sorterMap.get(kind).apply(comparator);
     }
 }
