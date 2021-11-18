@@ -2,12 +2,12 @@ package asortingservice;
 
 import java.util.Iterator;
 
-public class Queue<E> implements sortingservice.Queue<E> {
+public class QueueImpl<E> implements sortingservice.Queue<E> {
     QueueNode<E> firstNode;
     QueueNode<E> lastNode;
     int size;
 
-    public Queue() {
+    public QueueImpl() {
         this.firstNode = null;
         this.lastNode = null;
         this.size = 0;

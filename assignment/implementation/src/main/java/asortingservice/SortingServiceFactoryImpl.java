@@ -6,13 +6,19 @@ import sortingservice.Sorter;
 
 import java.util.Comparator;
 
-public class SortingServiceFactory implements sortingservice.SortingServiceFactory{
+public class SortingServiceFactoryImpl implements sortingservice.SortingServiceFactory {
     @Override
     public <T> Queue<T> createPreferredQueue(SortKind forSorter) {
-        switch (forSorter){
+        switch (forSorter) {
             case INSERTION:
                 //TODO: Continue
-                return new asortingservice.Queue<>();
+                return new QueueImpl<>();
+
+            case SELECTION:
+                //
+
+                return new QueueImpl<>();
+
         }
         return null;
     }
