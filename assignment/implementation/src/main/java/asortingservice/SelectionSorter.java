@@ -15,10 +15,9 @@ public class SelectionSorter<E> implements Sorter<E> {
     @Override
     public Queue sort(Queue queue) {
         //TODO: Sort the queue
-        var tempQueue = new QueueImpl<>();
+        Queue sortedQueue = new QueueImpl<>();
 
         //traverse the queue
-        long numOfElements = queue.size();
         E first;
         E next;
 
@@ -40,9 +39,8 @@ public class SelectionSorter<E> implements Sorter<E> {
             }
             //Put minimum at start and next after it
             queue.put(minimum);
-
+            sortedQueue = queue;
         }
-        var sortedQueue = new QueueImpl<>();
 
 
         return sortedQueue;
