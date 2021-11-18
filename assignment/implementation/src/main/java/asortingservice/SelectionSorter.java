@@ -14,17 +14,20 @@ public class SelectionSorter<E> implements Sorter<E> {
 
     @Override
     public Queue sort(Queue queue) {
+        //TODO: Sort the queue
         var tempQueue = new QueueImpl<>();
 
-
-        var sortedQueue = new QueueImpl<>();
-        //compare first 2 elements to start with
-        //TODO: Sort the queue
+        //traverse the queue
         long numOfElements = queue.size();
-        for (int i = 0; i < numOfElements; i++) {
+        E element;
+        while (queue.iterator().hasNext()) {
+            //compare first 2 elements to start with
             //TODO:Find minimum element using the comparator
 
+            element = (E) queue.get();
         }
+        var sortedQueue = new QueueImpl<>();
+
 
         return sortedQueue;
     }
