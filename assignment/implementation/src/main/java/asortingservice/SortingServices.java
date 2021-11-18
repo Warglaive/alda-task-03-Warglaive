@@ -21,7 +21,7 @@ public class SortingServices implements SortingServiceFactory {
     //TODO: Add more sorter kinds when ready
 
     private SortingServices() {
-        this.queueMap.put(SortKind.INSERTION, () -> new QueueImpl());
+        //this.queueMap.put(SortKind.INSERTION, () -> new QueueImpl());
     }
 
     @Override
@@ -34,5 +34,15 @@ public class SortingServices implements SortingServiceFactory {
     public <T> Sorter<T> createSorter(SortKind kind, Comparator<T> comparator) {
         //TODO
         return this.sorterMap.get(kind).apply(comparator);
+    }
+
+    /**
+     * @return array of supported(implemented) sorters
+     */
+    @Override
+    public SortKind[] supportedSorters() {
+        return new SortKind[]{
+                SortKind.SELECTION
+        };
     }
 }
