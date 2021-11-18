@@ -34,6 +34,7 @@ public class QueueImpl<E> implements Queue<E> {
             return;
         }
         // Add the new node at the end of queue and change last
+        //TODO: debug if lastNode has element and next is proper
         this.lastNode.next = tempNode;
         this.lastNode = tempNode;
         //increment size

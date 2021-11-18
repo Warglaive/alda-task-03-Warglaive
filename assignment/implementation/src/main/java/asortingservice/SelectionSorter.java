@@ -38,7 +38,8 @@ public class SelectionSorter<E> implements Sorter<E> {
                 //Does not matter
                 minimum = first;
             }
-
+            //Put minimum at start and next after it
+            queue.put(minimum);
 
         }
         var sortedQueue = new QueueImpl<>();
