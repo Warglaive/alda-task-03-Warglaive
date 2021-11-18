@@ -1,8 +1,12 @@
 package asortingservice;
 
-import java.util.Iterator;
+import sortingservice.Queue;
 
-public class QueueImpl<E> implements sortingservice.Queue<E> {
+import java.util.Iterator;
+import java.util.function.Consumer;
+import java.util.function.Supplier;
+
+public class QueueImpl<E> implements Queue<E> {
     QueueNode<E> firstNode;
     QueueNode<E> lastNode;
     int size;
@@ -74,4 +78,5 @@ public class QueueImpl<E> implements sortingservice.Queue<E> {
     public Iterator<E> iterator() {
         return null;
     }
+
 }
