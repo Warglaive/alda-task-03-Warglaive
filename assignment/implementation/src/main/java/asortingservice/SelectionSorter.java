@@ -19,12 +19,27 @@ public class SelectionSorter<E> implements Sorter<E> {
 
         //traverse the queue
         long numOfElements = queue.size();
-        E element;
-        while (queue.iterator().hasNext()) {
-            //compare first 2 elements to start with
-            //TODO:Find minimum element using the comparator
+        E first;
+        E next;
 
-            element = (E) queue.get();
+        E minimum;
+        while (queue.iterator().hasNext()) {
+            //TODO:Find minimum element using the comparator
+            //compare first 2 elements to start with
+            first = (E) queue.get();
+            next = (E) queue.iterator().next();
+            //find smaller element;
+            //1 == first > next, -1 == first < next
+            if (this.comparator.compare(first, next) == -1) {
+                minimum = first;
+            } else if (this.comparator.compare(first, next) == 1) {
+                minimum = next;
+            } else {
+                //Does not matter
+                minimum = first;
+            }
+
+
         }
         var sortedQueue = new QueueImpl<>();
 

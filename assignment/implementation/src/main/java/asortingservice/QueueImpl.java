@@ -43,7 +43,7 @@ public class QueueImpl<E> implements Queue<E> {
     /**
      * dequeue
      *
-     * @return
+     * @return first node's element
      */
     @Override
     public E get() {
@@ -54,7 +54,7 @@ public class QueueImpl<E> implements Queue<E> {
         // Store previous start and move start one node ahead
         QueueNode<E> tempNode = this.firstNode;
         this.firstNode = this.firstNode.next;
-        // If front becomes NULL, then change rear also as NULL
+        // If first becomes NULL, then change last also as NULL
         if (this.firstNode == null) {
             this.lastNode = null;
         }
