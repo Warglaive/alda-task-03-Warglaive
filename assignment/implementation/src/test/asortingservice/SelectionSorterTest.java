@@ -28,11 +28,14 @@ class SelectionSorterTest {
         Queue<Sorter> sortedQueue = sorter.sort(queue);
         assertThat(sortedQueue).isSameAs(queue);
 
-       // assertThat(sortedQueue).isOrderedAccoridingTo();
+        // assertThat(sortedQueue).isOrderedAccoridingTo();
         // more tests.
     }
 
     Queue<Sorter> fillRandom(Queue queue, int elementsCount) {
-
+        for (int i = 0; i < elementsCount; i++) {
+            queue.put(i);
+        }
+        return queue;
     }
 }

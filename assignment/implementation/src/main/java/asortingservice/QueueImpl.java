@@ -3,7 +3,6 @@ package asortingservice;
 import sortingservice.Queue;
 
 import java.util.Iterator;
-import java.util.function.Consumer;
 
 public class QueueImpl<E> implements Queue<E> {
     QueueNode<E> firstNode;
@@ -28,17 +27,19 @@ public class QueueImpl<E> implements Queue<E> {
         QueueNode<E> tempNode = new QueueNode<>(item);
         // If queue is empty, then new node is start and last both
         if (isEmpty()) {
-            /*this.firstNode = this.lastNode = tempNode;*/
-            this.firstNode = this.lastNode;
-            this.lastNode = tempNode;
+            this.firstNode = this.lastNode = tempNode;
+            this.size++;
+          /*  this.firstNode = this.lastNode;
+            this.lastNode = tempNode;*/
             return;
+        } else {
+            // Add the new node at the end of queue and change last
+            //TODO: debug if lastNode has element and next is proper
+            this.lastNode.next = tempNode;
+            this.lastNode = tempNode;
+            //increment size
+            this.size++;
         }
-        // Add the new node at the end of queue and change last
-        //TODO: debug if lastNode has element and next is proper
-        this.lastNode.next = tempNode;
-        this.lastNode = tempNode;
-        //increment size
-        this.size++;
     }
 
     /**
