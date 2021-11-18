@@ -10,7 +10,7 @@ public class SelectionSorter implements Sorter {
     }
 
     @Override
-    public Queue sort(Queue q) {
+    public Queue sort(Queue queue) {
         return null;
     }
 }
