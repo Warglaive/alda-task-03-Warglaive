@@ -6,6 +6,7 @@ public class QueueNode<E> {
 
     /**
      * create new LL node
+     *
      * @param item
      */
     public QueueNode(E item) {
