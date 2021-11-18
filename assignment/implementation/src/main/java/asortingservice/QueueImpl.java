@@ -4,7 +4,6 @@ import sortingservice.Queue;
 
 import java.util.Iterator;
 import java.util.function.Consumer;
-import java.util.function.Supplier;
 
 public class QueueImpl<E> implements Queue<E> {
     QueueNode<E> firstNode;
@@ -74,9 +73,22 @@ public class QueueImpl<E> implements Queue<E> {
         return this.size;
     }
 
+
     @Override
     public Iterator<E> iterator() {
-        return null;
-    }
+        //TODO: Implement
 
+        return new Iterator<>() {
+            @Override
+            public boolean hasNext() {
+                return lastNode.next != null;
+            }
+
+            @Override
+            public E next() {
+                //TODO: May be wrong
+                return firstNode.item;
+            }
+        };
+    }
 }
