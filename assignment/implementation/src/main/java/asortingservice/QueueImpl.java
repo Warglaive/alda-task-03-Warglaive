@@ -62,6 +62,7 @@ public class QueueImpl<E> implements Queue<E> {
         }
         //TODO: may be wrong
         //return
+        this.size--;
         return tempNode.item;
     }
 
