@@ -13,7 +13,7 @@ public class SelectionSorter<E> implements Sorter<E> {
     }
 
     @Override
-    public Queue sort(Queue queue) {
+    public Queue<E> sort(Queue<E> queue) {
         //TODO: Sort the queue
         Queue sortedQueue = new QueueImpl<>();
 
@@ -29,9 +29,9 @@ public class SelectionSorter<E> implements Sorter<E> {
             next = (E) queue.iterator().next();
             //find smaller element;
             //1 == first > next, -1 == first < next
-            if (this.comparator.compare(first, next) == -1) {
+            if (this.comparator.compare(first, next) < 0) {
                 minimum = first;
-            } else if (this.comparator.compare(first, next) == 1) {
+            } else if (this.comparator.compare(first, next) > 0) {
                 minimum = next;
             } else {
                 //Does not matter
