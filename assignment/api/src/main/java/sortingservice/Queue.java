@@ -26,7 +26,7 @@ package sortingservice;
  * @author Pieter van den Hombergh {@code pieter.van.den.hombergh@gmail.com}
  */
 public interface Queue<E> extends Iterable<E> {
-  
+
     /**
      * Add element to queue.
      *
@@ -57,6 +57,7 @@ public interface Queue<E> extends Iterable<E> {
 
     /**
      * Return the item WITHOUT removing it from the queue
+     *
      * @return
      */
     E peek();
@@ -66,12 +67,7 @@ public interface Queue<E> extends Iterable<E> {
      *
      * @return
      */
-    E headNext();
 
-    /**
-     *
-     * @return
-     */
     E tailNext();
 
     E getHeadNode();

@@ -14,7 +14,25 @@ public class SelectionSorter<E> implements Sorter<E> {
 
     @Override
     public Queue<E> sort(Queue<E> queue) {
-        //TODO: Sort the queue
+
+        //1. Get head node and save to temp var
+        //2.
+        QueueNode<E> tempNode = (QueueNode<E>) queue.getHeadNode();
+        QueueNode<E> next = tempNode.next;
+
+
+        while (tempNode != null) {
+
+        }
+
+        return null;
+
+
+
+
+
+
+     /*   //TODO: Sort the queue
         Queue<E> sortedQueue = new QueueImpl<>();
 
         //traverse the queue
@@ -43,7 +61,7 @@ public class SelectionSorter<E> implements Sorter<E> {
         }
 
 
-        return sortedQueue;
+        return sortedQueue;*/
     }
 
     @Override

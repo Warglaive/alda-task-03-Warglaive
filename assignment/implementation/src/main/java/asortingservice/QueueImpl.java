@@ -29,8 +29,6 @@ public class QueueImpl<E> implements Queue<E> {
         if (isEmpty()) {
             this.headNode = this.tailNode = tempNode;
             this.size++;
-          /*  this.firstNode = this.lastNode;
-            this.lastNode = tempNode;*/
             return;
         } else {
             // Add the new node at the end of queue and change last
@@ -116,5 +114,27 @@ public class QueueImpl<E> implements Queue<E> {
                 return headNode.next.item;
             }
         };
+    }
+
+
+    public QueueNode<E> getTailNode() {
+        return tailNode;
+    }
+
+    public int getSize() {
+        return size;
+    }
+
+    public E headNext() {
+        return this.headNode.next.item;
+    }
+
+    public E tailNext() {
+        return this.tailNode.item;
+    }
+
+    @Override
+    public E getHeadNode() {
+        return this.headNode.next.item;
     }
 }
