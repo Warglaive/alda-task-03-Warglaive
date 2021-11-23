@@ -9,6 +9,7 @@ public class CountingComparator<T> implements Comparator<T> {
 
     public CountingComparator(Comparator<T> wrapped) {
         this.wrapped = wrapped;
+        this.count = new LongAdder();
     }
 
     @Override

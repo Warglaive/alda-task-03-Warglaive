@@ -74,6 +74,21 @@ public class QueueImpl<E> implements Queue<E> {
     }
 
     @Override
+    public E headNext() {
+        return null;
+    }
+
+    @Override
+    public E tailNext() {
+        return null;
+    }
+
+    @Override
+    public E getHeadNode() {
+        return null;
+    }
+
+    @Override
     public boolean isEmpty() {
         return this.size == 0;
     }

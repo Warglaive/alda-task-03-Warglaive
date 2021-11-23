@@ -60,4 +60,23 @@ public interface Queue<E> extends Iterable<E> {
      * @return
      */
     E peek();
+
+
+    /**
+     *
+     * @return
+     */
+    E headNext();
+
+    /**
+     *
+     * @return
+     */
+    E tailNext();
+
+    E getHeadNode();
+
+
+    //asortingservice.QueueNode getHeadNode();
 }
+
