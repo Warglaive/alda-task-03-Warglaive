@@ -67,6 +67,7 @@ public interface Queue<E> extends Iterable<E> {
      *
      * @return
      */
+
     E tailNext();
 
     E getHeadNode();
@@ -74,3 +75,4 @@ public interface Queue<E> extends Iterable<E> {
 
     //asortingservice.QueueNode getHeadNode();
 }
+
