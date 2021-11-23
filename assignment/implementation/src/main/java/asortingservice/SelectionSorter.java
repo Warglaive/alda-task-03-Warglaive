@@ -25,7 +25,7 @@ public class SelectionSorter<E> implements Sorter<E> {
         while (queue.iterator().hasNext()) {
             //TODO:Find minimum element using the comparator
             //compare first 2 elements to start with
-            first = (E) queue.get();
+            first = (E) queue.peek();
             next = (E) queue.iterator().next();
             //find smaller element;
             //1 == first > next, -1 == first < next

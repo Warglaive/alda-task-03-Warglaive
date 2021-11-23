@@ -54,4 +54,10 @@ public interface Queue<E> extends Iterable<E> {
      * @return the number of elements.
      */
     long size();
+
+    /**
+     * Return the item WITHOUT removing it from the queue
+     * @return
+     */
+    E peek();
 }
