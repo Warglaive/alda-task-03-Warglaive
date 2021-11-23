@@ -97,7 +97,7 @@ public class QueueImpl<E> implements Queue<E> {
             @Override
             public E next() {
                 //TODO: May be wrong
-                return headNode.item;
+                return headNode.next.item;
             }
         };
     }
