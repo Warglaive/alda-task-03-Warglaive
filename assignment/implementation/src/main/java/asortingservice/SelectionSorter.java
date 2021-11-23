@@ -15,7 +15,7 @@ public class SelectionSorter<E> implements Sorter<E> {
     @Override
     public Queue<E> sort(Queue<E> queue) {
         //TODO: Sort the queue
-        Queue sortedQueue = new QueueImpl<>();
+        Queue<E> sortedQueue = new QueueImpl<>();
 
         //traverse the queue
         E first;
