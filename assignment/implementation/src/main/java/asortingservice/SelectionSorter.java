@@ -15,16 +15,17 @@ public class SelectionSorter<E> implements Sorter<E> {
     @Override
     public Queue<E> sort(Queue<E> queue) {
 
-        Queue<E> temp = queue;
-    var a =    queue.getHeadNode();
-        queue.headNext();
+        //1. Get head node and save to temp var
+        //2.
+        QueueNode<E> tempNode = (QueueNode<E>) queue.getHeadNode();
+        QueueNode<E> next = tempNode.next;
 
 
-        while (!temp.isEmpty()) {
+        while (tempNode != null) {
 
         }
 
-
+        return null;
 
 
 
