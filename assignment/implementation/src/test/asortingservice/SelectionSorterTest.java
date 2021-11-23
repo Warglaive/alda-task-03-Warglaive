@@ -6,7 +6,9 @@ import sortingservice.Queue;
 import sortingservice.SortKind;
 import sortingservice.Sorter;
 
+import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
@@ -20,22 +22,24 @@ class SelectionSorterTest {
     }
 
     @Test
-    void sort() {
-        Queue<Sorter> queue = factory.createPreferredQueue(SortKind.SELECTION);
-        queue = fillRandom(queue, 100);
-        Comparator<Sorter> comp = new CountingComparator<>((a, b) -> a.compareTo(b));
-        Sorter<Sorter> sorter = factory.createSorter(SortKind.SELECTION, comp);
-        Queue<Sorter> sortedQueue = sorter.sort(queue);
+    void integerSortTest() {
+        Queue<Integer> queue = factory.createPreferredQueue(SortKind.SELECTION);
+        queue = fillRandom(queue, 20);
+        Comparator<Integer> comp = new CountingComparator<>((a, b) -> a.compareTo(b));
+        Sorter<Integer> sorter = factory.createSorter(SortKind.SELECTION, comp);
+        Queue<Integer> sortedQueue = sorter.sort(queue);
         assertThat(sortedQueue).isSameAs(queue);
 
         // assertThat(sortedQueue).isOrderedAccoridingTo();
         // more tests.
     }
 
-    Queue<Sorter> fillRandom(Queue queue, int elementsCount) {
-        for (int i = 0; i < elementsCount; i++) {
-            queue.put(i);
+    Queue<Integer> fillRandom(Queue<Integer> unsortedQueue, int elementsCount) {
+        //make unsorted queue
+
+        for (int i = 5; i > 0; i--) {
+            unsortedQueue.put(i);
         }
-        return queue;
+        return unsortedQueue;
     }
 }

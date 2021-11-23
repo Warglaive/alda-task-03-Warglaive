@@ -9,8 +9,9 @@ public class QueueNode<E> {
      *
      * @param item
      */
-    public QueueNode(E item) {
+    public QueueNode(E item, QueueNode<E> next) {
         this.item = item;
-        this.next = null;
+        this.next = next;
     }
+
 }

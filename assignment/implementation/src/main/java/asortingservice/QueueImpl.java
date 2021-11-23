@@ -5,13 +5,13 @@ import sortingservice.Queue;
 import java.util.Iterator;
 
 public class QueueImpl<E> implements Queue<E> {
-    QueueNode<E> firstNode;
-    QueueNode<E> lastNode;
+    QueueNode<E> headNode;
+    QueueNode<E> tailNode;
     int size;
 
     public QueueImpl() {
-        this.firstNode = null;
-        this.lastNode = null;
+        this.headNode = null;
+        this.tailNode = null;
         this.size = 0;
     }
 
@@ -24,10 +24,10 @@ public class QueueImpl<E> implements Queue<E> {
     @Override
     public void put(E item) {
         //create new node containing the item
-        QueueNode<E> tempNode = new QueueNode<>(item);
+        QueueNode<E> tempNode = new QueueNode<>(item, null);
         // If queue is empty, then new node is start and last both
         if (isEmpty()) {
-            this.firstNode = this.lastNode = tempNode;
+            this.headNode = this.tailNode = tempNode;
             this.size++;
           /*  this.firstNode = this.lastNode;
             this.lastNode = tempNode;*/
@@ -35,8 +35,8 @@ public class QueueImpl<E> implements Queue<E> {
         } else {
             // Add the new node at the end of queue and change last
             //TODO: debug if lastNode has element and next is proper
-            this.lastNode.next = tempNode;
-            this.lastNode = tempNode;
+            this.tailNode.next = tempNode;
+            this.tailNode = tempNode;
             //increment size
             this.size++;
         }
@@ -54,15 +54,23 @@ public class QueueImpl<E> implements Queue<E> {
             return null;
         }
         // Store previous start and move start one node ahead
-        QueueNode<E> tempNode = this.firstNode;
-        this.firstNode = this.firstNode.next;
+        QueueNode<E> tempNode = this.headNode;
+        this.headNode = this.headNode.next;
         // If first becomes NULL, then change last also as NULL
-        if (this.firstNode == null) {
-            this.lastNode = null;
+        if (this.headNode == null) {
+            this.tailNode = null;
         }
         //TODO: may be wrong
         //return
         return tempNode.item;
+    }
+
+    public E peek() {
+        // If queue is empty, return NULL.
+        if (isEmpty()) {
+            return null;
+        }
+        return this.headNode.item;
     }
 
     @Override
@@ -83,13 +91,13 @@ public class QueueImpl<E> implements Queue<E> {
         return new Iterator<>() {
             @Override
             public boolean hasNext() {
-                return lastNode.next != null;
+                return headNode.next != null;
             }
 
             @Override
             public E next() {
                 //TODO: May be wrong
-                return firstNode.next.item;
+                return headNode.item;
             }
         };
     }
