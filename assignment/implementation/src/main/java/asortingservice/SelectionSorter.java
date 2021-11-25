@@ -16,56 +16,36 @@ public class SelectionSorter<E> implements Sorter<E> {
     public Queue<E> sort(Queue<E> queue) {
         QueueImpl<E> impl = (QueueImpl<E>) queue;
         //1. Get head node and save to temp var
-        //2.
+
 
         //Get head node and next node
-        QueueNode<E> tempNode = impl.getHeadNode();
-        QueueNode<E> next = tempNode.next;
-
+        QueueNode<E> temp = impl.getHeadNode();
+        QueueNode<E> r = temp.next;
         var firstItem = impl.getHeadNode().item;
-        var nextItem = next.item;
+        var nextItem = r.item;
 
-        while (tempNode.next != null) {
+        E minItem;
 
-        }
-
-        return null;
-
-
-
-
-
-
-     /*   //TODO: Sort the queue
-        Queue<E> sortedQueue = new QueueImpl<>();
-
-        //traverse the queue
-        E first;
-        E next;
-
-        E minimum;
-        while (queue.iterator().hasNext()) {
-            //TODO:Find minimum element using the comparator
-            //compare first 2 elements to start with
-            first = (E) queue.peek();
-            next = (E) queue.iterator().next();
-            //find smaller element;
-            //1 == first > next, -1 == first < next
-            if (this.comparator.compare(first, next) < 0) {
-                minimum = first;
-            } else if (this.comparator.compare(first, next) > 0) {
-                minimum = next;
-            } else {
-                //Does not matter
-                minimum = first;
+        // Traverse the List
+        while (temp != null) {
+            QueueNode min = temp;
+            // Traverse the unsorted sublist
+            while (temp.next != null) {
+                if (this.comparator.compare(firstItem, nextItem) > 0) {
+                    minItem = nextItem;
+                } else if (this.comparator.compare(firstItem, nextItem) < 0) {
+                    minItem = firstItem;
+                } else {
+                    minItem = firstItem;
+                }
+                //Swap data
+                E firstItemTemp = temp.item;
+                temp.item = minItem;
+                temp.next.item = firstItemTemp;
+                return null;
             }
-            //Put minimum at start and next after it
-            queue.put(minimum);
-            sortedQueue = queue;
         }
-
-
-        return sortedQueue;*/
+        return null;
     }
 
     public int compareTo(E b) {
