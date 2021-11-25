@@ -45,13 +45,14 @@ public class SelectionSorter<E> implements Sorter<E> {
                 minNode.item = minItem;
                 minNode.next.item = firstItemTemp;
 
-                // impl=temp;
+                // impl = temp;
                 // headNode = minNode;
                 //start at next node
                 minNode = minNode.next;
 
                 //new resultNode
                 QueueNode<E> resultNode = new QueueNode<>(minItem, minNode);
+                System.out.println(resultNode.item);
             }
             ((QueueImpl<E>) queue).headNode = headNode;
         }
