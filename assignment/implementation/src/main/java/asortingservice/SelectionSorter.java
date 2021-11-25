@@ -42,10 +42,10 @@ public class SelectionSorter<E> implements Sorter<E> {
                 E firstItemTemp = temp.item;
                 temp.item = minItem;
                 temp.next.item = firstItemTemp;
-                return null;
             }
         }
-        return null;
+        impl.put((E) temp);
+        return impl;
     }
 
     public int compareTo(E b) {
