@@ -101,6 +101,21 @@ public class QueueImpl<E> implements Queue<E> {
         };
     }
 
+    //TODO: Continue, use to iterate, remake it properly
+    public QueueNode<E> searchItemNode(E item) {
+        var currentNode = this.headNode;
+        for (int i = 0; i < size; i++) {
+            currentNode = currentNode.next;
+            try {
+                if (currentNode.item.equals(item)) {
+                    return currentNode;
+                }
+            } catch (NullPointerException npe) {
+                return null;
+            }
+        }
+        return null;
+    }
 
     public int getSize() {
         return size;
