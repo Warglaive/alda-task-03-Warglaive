@@ -40,15 +40,18 @@ public class SelectionSorter<E> implements Sorter<E> {
                 } else {
                     minItem = firstItem;
                 }
-                //nextNode = headNode;
                 //Swap data
                 E firstItemTemp = minNode.item;
                 minNode.item = minItem;
                 minNode.next.item = firstItemTemp;
+
                 // impl=temp;
                 // headNode = minNode;
                 //start at next node
                 minNode = minNode.next;
+
+                //new resultNode
+                QueueNode<E> resultNode = new QueueNode<>(minItem, minNode);
             }
             ((QueueImpl<E>) queue).headNode = headNode;
         }
