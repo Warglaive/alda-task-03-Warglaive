@@ -48,6 +48,9 @@ public class SelectionSorter<E> implements Sorter<E> {
                 // impl = temp;
                 // headNode = minNode;
                 //start at next node
+                /* for (int i = 0; i < ((QueueImpl<E>) queue).size; i++) {
+                    ((QueueImpl<E>) queue).headNode.next();
+                }*/
                 minNode = minNode.next;
 
                 //new resultNode
