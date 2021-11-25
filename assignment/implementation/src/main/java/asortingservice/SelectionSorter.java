@@ -14,14 +14,18 @@ public class SelectionSorter<E> implements Sorter<E> {
 
     @Override
     public Queue<E> sort(Queue<E> queue) {
-
+        QueueImpl<E> impl = (QueueImpl<E>) queue;
         //1. Get head node and save to temp var
         //2.
-        QueueNode<E> tempNode = (QueueNode<E>) queue.getHeadNode();
+
+        //Get head node and next node
+        QueueNode<E> tempNode = impl.getHeadNode();
         QueueNode<E> next = tempNode.next;
 
+        var firstItem = impl.getHeadNode().item;
+        var nextItem = next.item;
 
-        while (tempNode != null) {
+        while (tempNode.next != null) {
 
         }
 
@@ -64,7 +68,6 @@ public class SelectionSorter<E> implements Sorter<E> {
         return sortedQueue;*/
     }
 
-    @Override
     public int compareTo(E b) {
         //TODO: MAy be buggy
         return this.comparator.compare((E) this, b);

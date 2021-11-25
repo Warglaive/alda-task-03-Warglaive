@@ -2,11 +2,11 @@ package sortingservice;
 
 /**
  * A sorter sorts it input.
- *
+ * <p>
  * The implementation is expected to return the <b>same</b> queue instance.
  *
- * @author Pieter van den Hombergh {@code pieter.van.den.hombergh@gmail.com}
  * @param <T> type of elements in queue.
+ * @author Pieter van den Hombergh {@code pieter.van.den.hombergh@gmail.com}
  */
 public interface Sorter<T> {
 
@@ -17,7 +17,7 @@ public interface Sorter<T> {
      * @param q to be sorted
      * @return the queue with the elements in non-descending order as per the comparator.
      */
-    Queue<T> sort( Queue<T> q );
+    Queue<T> sort(Queue<T> q);
 
     int compareTo(T b);
 }

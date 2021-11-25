@@ -118,8 +118,9 @@ public class QueueImpl<E> implements Queue<E> {
         return this.tailNode.item;
     }
 
-    @Override
-    public E getHeadNode() {
-        return this.headNode.next.item;
+
+    public QueueNode<E> getHeadNode() {
+        return this.headNode;
     }
+
 }
