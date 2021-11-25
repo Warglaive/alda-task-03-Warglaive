@@ -123,4 +123,7 @@ public class QueueImpl<E> implements Queue<E> {
         return this.headNode;
     }
 
+    public void setHeadNode(QueueNode<E> headNode) {
+        this.headNode = headNode;
+    }
 }
