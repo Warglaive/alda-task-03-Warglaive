@@ -27,7 +27,8 @@ public class SelectionSorter<E> implements Sorter<E> {
 
         // Traverse the List
         while (temp != null) {
-            QueueNode min = temp;
+            QueueNode<E> minNode = temp;
+            QueueNode<E> nextNode = temp.next;
             // Traverse the unsorted sublist
             while (temp.next != null) {
                 var firstItem = impl.getHeadNode().item;
@@ -36,16 +37,18 @@ public class SelectionSorter<E> implements Sorter<E> {
 
                 if (this.comparator.compare(firstItem, nextItem) > 0) {
                     minItem = nextItem;
+                    minNode = nextNode;
                 } else if (this.comparator.compare(firstItem, nextItem) < 0) {
                     minItem = firstItem;
                 } else {
                     minItem = firstItem;
                 }
+                nextNode = temp;
                 //Swap data
                 E firstItemTemp = temp.item;
-                temp.item = minItem;
-                temp.next.item = firstItemTemp;
-               // impl=temp;
+                minNode.item = minItem;
+                minNode.next.item = firstItemTemp;
+                // impl=temp;
             }
         }
 
