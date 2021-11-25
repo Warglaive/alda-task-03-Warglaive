@@ -17,29 +17,26 @@ public class SelectionSorter<E> implements Sorter<E> {
         QueueImpl<E> impl = (QueueImpl<E>) queue;
         //1. Get head node and save to temp var
 
-
-        QueueNode<E> headNode = impl.getHeadNode();
+        QueueNode<E> headNode = impl.headNode;
         //QueueNode<E> r = headNode.next;
-
 
         E minItem;
 
         // Traverse the List
         while (headNode != null) {
             //Get head node and next node
-            QueueNode<E> minNode = impl.getHeadNode();
+            QueueNode<E> minNode = impl.headNode;
             // QueueNode<E> nextNode = headNode.next;
             // Traverse the unsorted sublist
             while (minNode.next != null) {
                 var firstItem = minNode.item;
                 var nextItem = minNode.next.item;
 
-
                 if (this.comparator.compare(firstItem, nextItem) > 0) {
                     minItem = nextItem;
                     //minNode = nextNode;
                 } else if (this.comparator.compare(firstItem, nextItem) < 0) {
-                    minItem = firstItem;
+                    continue;
                 } else {
                     minItem = firstItem;
                 }
@@ -49,13 +46,14 @@ public class SelectionSorter<E> implements Sorter<E> {
                 minNode.item = minItem;
                 minNode.next.item = firstItemTemp;
                 // impl=temp;
-                headNode = minNode;
+                // headNode = minNode;
                 //start at next node
                 minNode = minNode.next;
             }
+            ((QueueImpl<E>) queue).headNode = headNode;
         }
 
-        return (Queue<E>) headNode;
+        return queue;
     }
 
     public int compareTo(E b) {
