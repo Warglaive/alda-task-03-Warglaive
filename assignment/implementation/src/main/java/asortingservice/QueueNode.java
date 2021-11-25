@@ -13,5 +13,4 @@ public class QueueNode<E> {
         this.item = item;
         this.next = next;
     }
-
 }

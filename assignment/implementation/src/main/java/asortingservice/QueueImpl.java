@@ -90,13 +90,13 @@ public class QueueImpl<E> implements Queue<E> {
         return new Iterator<>() {
             @Override
             public boolean hasNext() {
-                return headNode.next != null;
+                return headNode.next != tailNode;
             }
 
             @Override
             public E next() {
                 //TODO: May be wrong
-                return headNode.next.item;
+                return (E) headNode.next;
             }
         };
     }
@@ -105,5 +105,4 @@ public class QueueImpl<E> implements Queue<E> {
     public int getSize() {
         return size;
     }
-
 }
