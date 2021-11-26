@@ -45,13 +45,12 @@ public class SelectionSorter<E> implements Sorter<E> {
                 minNode.item = minItem;
                 minNode.next.item = firstItemTemp;
 
-                // impl = temp;
-                // headNode = minNode;
                 //start at next node
-                /* for (int i = 0; i < ((QueueImpl<E>) queue).size; i++) {
-                    ((QueueImpl<E>) queue).headNode.next();
-                }*/
-                minNode = minNode.next;
+                 for (int i = 0; i < impl.size; i++) {
+                     minNode = minNode.next;
+                    //TODO: fix
+                }
+
 
                 //new resultNode  
             }

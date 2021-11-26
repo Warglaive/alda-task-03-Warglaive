@@ -7,7 +7,7 @@ import java.util.Iterator;
 public class QueueImpl<E> implements Queue<E> {
     QueueNode<E> headNode;
     QueueNode<E> tailNode;
-    int size;
+    long size;
 
     public QueueImpl() {
         this.headNode = null;
@@ -101,7 +101,7 @@ public class QueueImpl<E> implements Queue<E> {
         };
     }
 
-    //TODO: Continue, use to iterate, remake it properly
+  /*  //TODO: Continue, use to iterate, remake it properly
     public QueueNode<E> searchItemNode(E item) {
         var currentNode = this.headNode;
         for (int i = 0; i < size; i++) {
@@ -115,9 +115,6 @@ public class QueueImpl<E> implements Queue<E> {
             }
         }
         return null;
-    }
+    }*/
 
-    public int getSize() {
-        return size;
-    }
 }
