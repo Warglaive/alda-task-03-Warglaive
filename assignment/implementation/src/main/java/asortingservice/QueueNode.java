@@ -2,7 +2,7 @@ package asortingservice;
 
 public class QueueNode<E> {
     E item;
-private     QueueNode<E> next;
+    private QueueNode<E> next;
 
     /**
      * create new LL node

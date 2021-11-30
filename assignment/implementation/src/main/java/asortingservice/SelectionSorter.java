@@ -19,7 +19,7 @@ public class SelectionSorter<E> implements Sorter<E> {
 
         QueueNode<E> headNode = impl.headNode;
 
-        E minItem;
+        E minItem = null;
         // Traverse the List
         while (headNode != null) {
             //Get head node and next node
@@ -29,25 +29,32 @@ public class SelectionSorter<E> implements Sorter<E> {
             // QueueNode<E> nextNode = headNode.next;
             // Traverse the unsorted sublist
             while (tempNode.getNext() != null) {
-                //start at next node
 
-                var firstItem = tempNode.item;
-                var nextItem = tempNode.getNext().item;
+                for (int i = 0; i < impl.size; i++) {
+                    //start at next node
 
-                if (this.comparator.compare(firstItem, nextItem) > 0) {
-                    minItem = nextItem;
-                } else if (this.comparator.compare(firstItem, nextItem) < 0) {
-                    continue;
-                } else {
-                    minItem = firstItem;
+                    var firstItem = tempNode.item;
+                    var nextItem = tempNode.getNext().item;
+
+                    if (this.comparator.compare(firstItem, nextItem) > 0) {
+                        minItem = nextItem;
+                    } else if (this.comparator.compare(firstItem, nextItem) < 0) {
+                        tempNode.setNext(tempNode.getNext());
+                    } else {
+                        minItem = firstItem;
+                    }
+                    //Swap data
+                    E maxItem = tempNode.item;
+                    tempNode.item = minItem;
+                    tempNode.getNext().item = maxItem;
+                    resultNode = new QueueNode<>(tempNode.item, tempNode.getNext());
+                    //add new values to result node
+
+                    //go to next node (temp.next)
+                    tempNode = tempNode.getNext();
+
+
                 }
-                //Swap data
-                E maxItem = tempNode.item;
-                tempNode.item = minItem;
-                tempNode.getNext().item = maxItem;
-                //add new values to result node
-
-                //go to next node (temp.next)
             }
             ((QueueImpl<E>) queue).headNode = headNode;
         }
