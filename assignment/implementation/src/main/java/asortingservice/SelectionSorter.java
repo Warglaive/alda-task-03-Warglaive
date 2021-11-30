@@ -46,7 +46,7 @@ public class SelectionSorter<E> implements Sorter<E> {
                 tempNode.item = minItem;
                 tempNode.getNext().item = maxItem;
                 //add new values to result node
-                r
+
                 //go to next node (temp.next)
             }
             ((QueueImpl<E>) queue).headNode = headNode;
