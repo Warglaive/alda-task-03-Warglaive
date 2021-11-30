@@ -33,7 +33,7 @@ public class QueueImpl<E> implements Queue<E> {
         } else {
             // Add the new node at the end of queue and change last
             //TODO: debug if lastNode has element and next is proper
-            this.tailNode.next = tempNode;
+            this.tailNode.setNext(tempNode);
             this.tailNode = tempNode;
             //increment size
             this.size++;
@@ -53,7 +53,7 @@ public class QueueImpl<E> implements Queue<E> {
         }
         // Store previous start and move start one node ahead
         QueueNode<E> tempNode = this.headNode;
-        this.headNode = this.headNode.next;
+        this.headNode = this.headNode.getNext();
         // If first becomes NULL, then change last also as NULL
         if (this.headNode == null) {
             this.tailNode = null;
@@ -90,31 +90,14 @@ public class QueueImpl<E> implements Queue<E> {
         return new Iterator<>() {
             @Override
             public boolean hasNext() {
-                return headNode.next != tailNode;
+                return headNode.getNext() != tailNode;
             }
 
             @Override
             public E next() {
                 //TODO: May be wrong
-                return (E) headNode.next;
+                return (E) headNode.getNext();
             }
         };
     }
-
-  /*  //TODO: Continue, use to iterate, remake it properly
-    public QueueNode<E> searchItemNode(E item) {
-        var currentNode = this.headNode;
-        for (int i = 0; i < size; i++) {
-            currentNode = currentNode.next;
-            try {
-                if (currentNode.item.equals(item)) {
-                    return currentNode;
-                }
-            } catch (NullPointerException npe) {
-                return null;
-            }
-        }
-        return null;
-    }*/
-
 }
