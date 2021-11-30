@@ -23,39 +23,31 @@ public class SelectionSorter<E> implements Sorter<E> {
         // Traverse the List
         while (headNode != null) {
             //Get head node and next node
-            QueueNode<E> minNode = impl.headNode;
+            QueueNode<E> tempNode = impl.headNode;
             //Node to save results to
             QueueNode<E> resultNode = new QueueNode<>(impl.get(), impl.headNode);
             // QueueNode<E> nextNode = headNode.next;
             // Traverse the unsorted sublist
-            int currentNodeIndex = 0;
-            while (minNode.next != null) {
+            while (tempNode.getNext() != null) {
                 //start at next node
 
-                var firstItem = minNode.item;
-                var nextItem = minNode.next.item;
+                var firstItem = tempNode.item;
+                var nextItem = tempNode.getNext().item;
 
                 if (this.comparator.compare(firstItem, nextItem) > 0) {
                     minItem = nextItem;
-                    //minNode = nextNode;
                 } else if (this.comparator.compare(firstItem, nextItem) < 0) {
                     continue;
                 } else {
                     minItem = firstItem;
                 }
                 //Swap data
-                E maxItem = minNode.item;
-                resultNode.item = minItem;
-                resultNode.next.item = maxItem;
-
-
-                //get next 2 by iterating the minNode(tempNode)
-                //TODO: Add out of bounds check
-                for (int i = 0; i < 1; i++) {
-                    minNode = minNode.next;
-                    //TODO: fix
-                }
-                currentNodeIndex++;
+                E maxItem = tempNode.item;
+                tempNode.item = minItem;
+                tempNode.getNext().item = maxItem;
+                //add new values to result node
+                r
+                //go to next node (temp.next)
             }
             ((QueueImpl<E>) queue).headNode = headNode;
         }
