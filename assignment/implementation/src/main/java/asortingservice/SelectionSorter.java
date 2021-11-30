@@ -18,17 +18,20 @@ public class SelectionSorter<E> implements Sorter<E> {
         //1. Get head node and save to temp var
 
         QueueNode<E> headNode = impl.headNode;
-        //QueueNode<E> r = headNode.next;
 
         E minItem;
-
         // Traverse the List
         while (headNode != null) {
             //Get head node and next node
             QueueNode<E> minNode = impl.headNode;
+            //Node to save results to
+            QueueNode<E> resultNode = new QueueNode<>(impl.get(), impl.headNode);
             // QueueNode<E> nextNode = headNode.next;
             // Traverse the unsorted sublist
+            int currentNodeIndex = 0;
             while (minNode.next != null) {
+                //start at next node
+
                 var firstItem = minNode.item;
                 var nextItem = minNode.next.item;
 
@@ -41,18 +44,18 @@ public class SelectionSorter<E> implements Sorter<E> {
                     minItem = firstItem;
                 }
                 //Swap data
-                E firstItemTemp = minNode.item;
-                minNode.item = minItem;
-                minNode.next.item = firstItemTemp;
+                E maxItem = minNode.item;
+                resultNode.item = minItem;
+                resultNode.next.item = maxItem;
 
-                //start at next node
-                 for (int i = 0; i < impl.size; i++) {
-                     minNode = minNode.next;
+
+                //get next 2 by iterating the minNode(tempNode)
+                //TODO: Add out of bounds check
+                for (int i = 0; i < 1; i++) {
+                    minNode = minNode.next;
                     //TODO: fix
                 }
-
-
-                //new resultNode  
+                currentNodeIndex++;
             }
             ((QueueImpl<E>) queue).headNode = headNode;
         }
