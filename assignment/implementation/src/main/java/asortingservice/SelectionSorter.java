@@ -17,30 +17,26 @@ public class SelectionSorter<E> implements Sorter<E> {
         QueueImpl<E> impl = (QueueImpl<E>) queue;
         //1. Get head node and save to temp var
 
+        //Get head node and next node
         QueueNode<E> headNode = impl.headNode;
-
-        // E minItem = null;
-        // Traverse the List
+        //traverse the list
         while (headNode != null) {
-            //Get head node and next node
-            QueueNode<E> tempNode = impl.headNode;
-            //traverse the list
-            while (tempNode != null) {
-                QueueNode<E> minItemNode = tempNode;
-                QueueNode<E> nextNode = tempNode.getNext();
-                //Traverse the unsorted sublist
-                while (nextNode != null) {
-                    if (this.comparator.compare(minItemNode.item, nextNode.item) > 0) {
-                        minItemNode = nextNode;
-                    }
-                    nextNode = nextNode.getNext();
+            QueueNode<E> minItemNode = headNode;
+            QueueNode<E> nextNode = headNode.getNext();
+            //Traverse the unsorted sublist
+            while (nextNode != null) {
+                //Find which node has the smallest element
+                if (this.comparator.compare(minItemNode.item, nextNode.item) > 0) {
+                    minItemNode = nextNode;
                 }
-                //swap data
-                E x = tempNode.item;
-                tempNode.item = minItemNode.item;
-                minItemNode.item = x;
-                tempNode = tempNode.getNext();
+                //go to next node
+                nextNode = nextNode.getNext();
             }
+            //swap elements
+            E tempItem = headNode.item;
+            headNode.item = minItemNode.item;
+            minItemNode.item = tempItem;
+            headNode = headNode.getNext();
         }
 
         return queue;
