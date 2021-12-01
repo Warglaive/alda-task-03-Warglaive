@@ -24,7 +24,7 @@ class SelectionSorterTest {
     @Test
     void integerSortTest() {
         Queue<Integer> queue = factory.createPreferredQueue(SortKind.SELECTION);
-        queue = fillRandom(queue, 20);
+        queue = fillRandom(queue, 50);
         Comparator<Integer> comp = new CountingComparator<>((a, b) -> a.compareTo(b));
         Sorter<Integer> sorter = factory.createSorter(SortKind.SELECTION, comp);
         Queue<Integer> sortedQueue = sorter.sort(queue);
@@ -37,7 +37,7 @@ class SelectionSorterTest {
     Queue<Integer> fillRandom(Queue<Integer> unsortedQueue, int elementsCount) {
         //make unsorted queue
 
-        for (int i = 5; i > 0; i--) {
+        for (int i = elementsCount; i > 0; i--) {
             unsortedQueue.put(i);
         }
         return unsortedQueue;
