@@ -18,11 +18,11 @@ public class SelectionSorter<E> implements Sorter<E> {
         //1. Get head node and save to temp var
 
         //Get head node and next node
-        QueueNode<E> headNode = impl.headNode;
+        Node<E> headNode = impl.headNode;
         //traverse the list
         while (headNode != null) {
-            QueueNode<E> minItemNode = headNode;
-            QueueNode<E> nextNode = headNode.getNext();
+            Node<E> minItemNode = headNode;
+            Node<E> nextNode = headNode.getNext();
             //Traverse the unsorted sublist
             while (nextNode != null) {
                 //Find which node has the smallest element

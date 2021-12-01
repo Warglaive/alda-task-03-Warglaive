@@ -1,24 +1,24 @@
 package asortingservice;
 
-public class QueueNode<E> {
+public class Node<E> {
     E item;
-    private QueueNode<E> next;
+    private Node<E> next;
 
     /**
      * create new LL node
      *
      * @param item
      */
-    public QueueNode(E item, QueueNode<E> next) {
+    public Node(E item, Node<E> next) {
         this.item = item;
         this.next = next;
     }
 
-    public QueueNode<E> getNext() {
+    public Node<E> getNext() {
         return next;
     }
 
-    public void setNext(QueueNode<E> next) {
+    public void setNext(Node<E> next) {
         this.next = next;
     }
 }

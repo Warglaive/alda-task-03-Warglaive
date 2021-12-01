@@ -5,8 +5,8 @@ import sortingservice.Queue;
 import java.util.Iterator;
 
 public class QueueImpl<E> implements Queue<E> {
-    QueueNode<E> headNode;
-    QueueNode<E> tailNode;
+    Node<E> headNode;
+    Node<E> tailNode;
     long size;
 
     QueueImpl() {
@@ -24,7 +24,7 @@ public class QueueImpl<E> implements Queue<E> {
     @Override
     public void put(E item) {
         //create new node containing the item
-        QueueNode<E> tempNode = new QueueNode<>(item, null);
+        Node<E> tempNode = new Node<>(item, null);
         // If queue is empty, then new node is start and last both
         if (isEmpty()) {
             this.headNode = this.tailNode = tempNode;
@@ -52,7 +52,7 @@ public class QueueImpl<E> implements Queue<E> {
             return null;
         }
         // Store previous start and move start one node ahead
-        QueueNode<E> tempNode = this.headNode;
+        Node<E> tempNode = this.headNode;
         this.headNode = this.headNode.getNext();
         // If first becomes NULL, then change last also as NULL
         if (this.headNode == null) {
