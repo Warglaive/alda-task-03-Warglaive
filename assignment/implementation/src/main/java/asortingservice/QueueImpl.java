@@ -84,8 +84,11 @@ public class QueueImpl<E> implements Queue<E> {
 
     @Override
     public E peek() {
-        return this.headNode.item;
-    }
+        // If queue is empty, return NULL.
+        if (isEmpty()) {
+            return null;
+        }
+        return this.headNode.item;    }
 
 
     @Override
