@@ -84,7 +84,7 @@ public class QueueImpl<E> implements Queue<E> {
 
     @Override
     public E peek() {
-        return null;
+        return this.headNode.item;
     }
 
 
