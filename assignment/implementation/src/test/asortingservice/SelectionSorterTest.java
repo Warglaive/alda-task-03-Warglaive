@@ -23,6 +23,10 @@ class SelectionSorterTest {
     }
 
     @Test
+    void constructorTest(){
+        assertThat(this.sorter).isExactlyInstanceOf(SelectionSorter.class);
+    }
+    @Test
     void integerSortTest() {
         Queue<Integer> queue = this.factory.createPreferredQueue(SortKind.SELECTION);
         //hardcoded elementsCount value for test purposes
