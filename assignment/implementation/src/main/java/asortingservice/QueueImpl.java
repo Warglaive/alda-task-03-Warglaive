@@ -9,7 +9,7 @@ public class QueueImpl<E> implements Queue<E> {
     QueueNode<E> tailNode;
     long size;
 
-    public QueueImpl() {
+    QueueImpl() {
         this.headNode = null;
         this.tailNode = null;
         this.size = 0;
@@ -63,14 +63,6 @@ public class QueueImpl<E> implements Queue<E> {
         this.size--;
         return tempNode.item;
     }
-
-    /*private E peek() {
-        // If queue is empty, return NULL.
-        if (isEmpty()) {
-            return null;
-        }
-        return this.headNode.item;
-    }*/
 
     @Override
     public boolean isEmpty() {
