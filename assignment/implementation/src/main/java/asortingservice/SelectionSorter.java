@@ -8,7 +8,7 @@ import java.util.Comparator;
 public class SelectionSorter<E> implements Sorter<E> {
     private CountingComparator<E> comparator;
 
-    public SelectionSorter(Comparator<E> comparator) {
+    SelectionSorter(Comparator<E> comparator) {
         this.comparator = (CountingComparator<E>) comparator;
     }
 
