@@ -6,7 +6,7 @@ import sortingservice.Sorter;
 import java.util.Comparator;
 
 public class SelectionSorter<E> implements Sorter<E> {
-    CountingComparator<E> comparator;
+    private CountingComparator<E> comparator;
 
     public SelectionSorter(Comparator<E> comparator) {
         this.comparator = (CountingComparator<E>) comparator;
@@ -41,6 +41,7 @@ public class SelectionSorter<E> implements Sorter<E> {
 
         return queue;
     }
+
     public int compareTo(E b) {
         //TODO: MAy be buggy
         return this.comparator.compare((E) this, b);
