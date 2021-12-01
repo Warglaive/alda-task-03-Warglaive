@@ -9,10 +9,6 @@ public class QueueImpl<E> implements Queue<E> {
         return headNode;
     }
 
-    public void setHeadNode(Node<E> headNode) {
-        this.headNode = headNode;
-    }
-
     private Node<E> headNode;
     private Node<E> tailNode;
     long size;
