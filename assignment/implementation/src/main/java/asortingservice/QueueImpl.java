@@ -64,13 +64,13 @@ public class QueueImpl<E> implements Queue<E> {
         return tempNode.item;
     }
 
-    private E peek() {
+    /*private E peek() {
         // If queue is empty, return NULL.
         if (isEmpty()) {
             return null;
         }
         return this.headNode.item;
-    }
+    }*/
 
     @Override
     public boolean isEmpty() {
