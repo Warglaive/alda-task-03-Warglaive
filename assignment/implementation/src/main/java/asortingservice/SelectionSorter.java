@@ -42,6 +42,7 @@ public class SelectionSorter<E> implements Sorter<E> {
         return queue;
     }
 
+    @Override
     public int compareTo(E b) {
         //TODO: MAy be buggy
         return this.comparator.compare((E) this, b);
