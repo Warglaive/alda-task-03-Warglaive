@@ -23,23 +23,23 @@ public class SelectionSorter<E> implements Sorter<E> {
         // Traverse the List
         while (headNode != null) {
             //Get head node and next node
-            QueueNode<E> temp = impl.headNode;
+            QueueNode<E> tempNode = impl.headNode;
             //traverse the list
-            while (temp != null) {
-                QueueNode<E> min = temp;
-                QueueNode<E> r = temp.getNext();
+            while (tempNode != null) {
+                QueueNode<E> minItemNode = tempNode;
+                QueueNode<E> nextNode = tempNode.getNext();
                 //Traverse the unsorted sublist
-                while (r != null) {
-                    if (this.comparator.compare(min.item, r.item) > 0) {
-                        min = r;
+                while (nextNode != null) {
+                    if (this.comparator.compare(minItemNode.item, nextNode.item) > 0) {
+                        minItemNode = nextNode;
                     }
-                    r = r.getNext();
+                    nextNode = nextNode.getNext();
                 }
                 //swap data
-                E x = temp.item;
-                temp.item = min.item;
-                min.item = x;
-                temp = temp.getNext();
+                E x = tempNode.item;
+                tempNode.item = minItemNode.item;
+                minItemNode.item = x;
+                tempNode = tempNode.getNext();
             }
         }
 
