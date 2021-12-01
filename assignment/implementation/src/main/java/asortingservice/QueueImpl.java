@@ -64,7 +64,7 @@ public class QueueImpl<E> implements Queue<E> {
         return tempNode.item;
     }
 
-    public E peek() {
+    private E peek() {
         // If queue is empty, return NULL.
         if (isEmpty()) {
             return null;
