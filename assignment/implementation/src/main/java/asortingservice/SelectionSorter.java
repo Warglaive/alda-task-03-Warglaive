@@ -41,42 +41,6 @@ public class SelectionSorter<E> implements Sorter<E> {
                 min.item = x;
                 temp = temp.getNext();
             }
-
-
-            //WARNING: Another impl
-        /*    //Node to save results to
-            QueueNode<E> resultNode = new QueueNode<>(impl.get(), impl.headNode);
-            // QueueNode<E> nextNode = headNode.next;
-            // Traverse the unsorted sublist
-            while (tempNode.getNext() != null) {
-
-                for (int i = 0; i < impl.size; i++) {
-                    //start at next node
-
-                    var firstItem = tempNode.item;
-                    var nextItem = tempNode.getNext().item;
-
-                    if (this.comparator.compare(firstItem, nextItem) > 0) {
-                        minItem = nextItem;
-                    } else if (this.comparator.compare(firstItem, nextItem) < 0) {
-                        tempNode.setNext(tempNode.getNext());
-                    } else {
-                        minItem = firstItem;
-                    }
-                    //Swap data
-                    E maxItem = tempNode.item;
-                    tempNode.item = minItem;
-                    tempNode.getNext().item = maxItem;
-                    resultNode = new QueueNode<>(tempNode.item, tempNode.getNext());
-                    //add new values to result node
-
-                    //go to next node (temp.next)
-                    tempNode = tempNode.getNext();
-
-
-                }
-            }
-            ((QueueImpl<E>) queue).headNode = headNode;*/
         }
 
         return queue;
