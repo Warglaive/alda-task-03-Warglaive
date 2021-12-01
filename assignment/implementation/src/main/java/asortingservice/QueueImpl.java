@@ -82,6 +82,11 @@ public class QueueImpl<E> implements Queue<E> {
         return this.size;
     }
 
+    @Override
+    public E peek() {
+        return null;
+    }
+
 
     @Override
     public Iterator<E> iterator() {
