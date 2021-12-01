@@ -1,14 +1,14 @@
 package asortingservice;
 
-import java.util.Comparator;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.function.Supplier;
-
 import sortingservice.Queue;
 import sortingservice.SortKind;
 import sortingservice.Sorter;
 import sortingservice.SortingServiceFactory;
+
+import java.util.Comparator;
+import java.util.Map;
+import java.util.function.Function;
+import java.util.function.Supplier;
 
 public class SortingServices implements SortingServiceFactory {
     Map<SortKind, Supplier<Queue>> queueMap =

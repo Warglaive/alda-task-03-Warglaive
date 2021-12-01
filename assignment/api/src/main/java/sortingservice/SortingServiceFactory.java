@@ -2,8 +2,6 @@ package sortingservice;
 
 import java.util.Comparator;
 
-import static sortingservice.SortKind.*;
-
 /**
  * Abstract factory for sorters a and queue implementation classes.
  * The implementing class provides mandatory and optional sorters a student may want to implement.
