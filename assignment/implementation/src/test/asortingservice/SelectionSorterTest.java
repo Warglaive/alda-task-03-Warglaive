@@ -6,9 +6,7 @@ import sortingservice.Queue;
 import sortingservice.SortKind;
 import sortingservice.Sorter;
 
-import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.concurrent.ThreadLocalRandom;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
