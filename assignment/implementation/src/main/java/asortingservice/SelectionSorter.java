@@ -6,10 +6,10 @@ import sortingservice.Sorter;
 import java.util.Comparator;
 
 public class SelectionSorter<E> implements Sorter<E> {
-    private CountingComparator<E> comparator;
+    private Comparator<E> comparator;
 
     SelectionSorter(Comparator<E> comparator) {
-        this.comparator = (CountingComparator<E>) comparator;
+        this.comparator = comparator;
     }
 
     @Override
