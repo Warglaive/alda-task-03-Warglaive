@@ -18,7 +18,7 @@ public class SelectionSorter<E> implements Sorter<E> {
         //1. Get head node and save to temp var
 
         //Get head node and next node
-        Node<E> headNode = impl.headNode;
+        Node<E> headNode = impl.getHeadNode();
         //traverse the list
         while (headNode != null) {
             Node<E> minItemNode = headNode;

@@ -5,8 +5,16 @@ import sortingservice.Queue;
 import java.util.Iterator;
 
 public class QueueImpl<E> implements Queue<E> {
-    Node<E> headNode;
-    Node<E> tailNode;
+    public Node<E> getHeadNode() {
+        return headNode;
+    }
+
+    public void setHeadNode(Node<E> headNode) {
+        this.headNode = headNode;
+    }
+
+    private Node<E> headNode;
+    private Node<E> tailNode;
     long size;
 
     QueueImpl() {

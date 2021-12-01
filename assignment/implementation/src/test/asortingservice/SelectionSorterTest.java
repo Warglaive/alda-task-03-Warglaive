@@ -33,7 +33,7 @@ class SelectionSorterTest {
     void integerSortTest() {
         Queue<Integer> queue = this.factory.createPreferredQueue(SortKind.SELECTION);
         //hardcoded elementsCount value for test purposes
-        queue = fillRandom(queue, 50);
+        queue = fillRandom(queue, 5);
         Queue<Integer> sortedQueue = this.sorter.sort(queue);
         assertThat(sortedQueue).isSameAs(queue);
     }
