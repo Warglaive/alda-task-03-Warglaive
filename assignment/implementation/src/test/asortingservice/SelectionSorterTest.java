@@ -12,29 +12,27 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 class SelectionSorterTest {
     private SortingServices factory;
-
+    private Comparator<Integer> comparator;
+    private Sorter<Integer> sorter;
 
     @BeforeEach
     void setUp() {
         this.factory = new SortingServices();
+        this.comparator = new CountingComparator<>((a, b) -> a.compareTo(b));
+        this.sorter = this.factory.createSorter(SortKind.SELECTION, this.comparator);
     }
 
     @Test
     void integerSortTest() {
-        Queue<Integer> queue = factory.createPreferredQueue(SortKind.SELECTION);
+        Queue<Integer> queue = this.factory.createPreferredQueue(SortKind.SELECTION);
+        //hardcoded elementsCount value for test purposes
         queue = fillRandom(queue, 50);
-        Comparator<Integer> comp = new CountingComparator<>((a, b) -> a.compareTo(b));
-        Sorter<Integer> sorter = factory.createSorter(SortKind.SELECTION, comp);
-        Queue<Integer> sortedQueue = sorter.sort(queue);
+        Queue<Integer> sortedQueue = this.sorter.sort(queue);
         assertThat(sortedQueue).isSameAs(queue);
-
-        // assertThat(sortedQueue).isOrderedAccoridingTo();
-        // more tests.
     }
 
     Queue<Integer> fillRandom(Queue<Integer> unsortedQueue, int elementsCount) {
         //make unsorted queue
-
         for (int i = elementsCount; i > 0; i--) {
             unsortedQueue.put(i);
         }
