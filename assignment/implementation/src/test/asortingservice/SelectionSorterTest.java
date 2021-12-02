@@ -2,7 +2,6 @@ package asortingservice;
 
 import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import sortingservice.Queue;
 import sortingservice.SortKind;
@@ -21,6 +20,7 @@ class SelectionSorterTest {
     @BeforeEach
     void setUp() {
         this.factory = new SortingServices();
+        this.comparator = new CountingComparator<>((a, b) -> a.compareTo(b));
         this.sorter = this.factory.createSorter(SortKind.SELECTION, this.comparator);
     }
 
@@ -29,7 +29,6 @@ class SelectionSorterTest {
         assertThat(this.sorter).isExactlyInstanceOf(SelectionSorter.class);
     }
 
-    @Disabled
     @Test
     void integerSortTest() {
         Queue<Integer> queue = this.factory.createPreferredQueue(SortKind.SELECTION);
@@ -47,7 +46,6 @@ class SelectionSorterTest {
         return unsortedQueue;
     }
 
-    @Disabled
     @Test
     void compareToTest() {
         SelectionSorter<Integer> sorter = new SelectionSorter<>(this.comparator);
