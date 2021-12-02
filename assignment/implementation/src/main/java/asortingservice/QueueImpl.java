@@ -94,7 +94,7 @@ public class QueueImpl<E> implements Queue<E> {
         return new Iterator<>() {
             @Override
             public boolean hasNext() {
-                return headNode.getNext() != tailNode;
+                return headNode != tailNode;
             }
 
             @Override

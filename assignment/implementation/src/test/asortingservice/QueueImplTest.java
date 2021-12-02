@@ -72,6 +72,11 @@ public class QueueImplTest<E> {
 
     @Test
     void iterator() {
-        
+        this.selectionQueue.put((E) Integer.valueOf("1"));
+        this.selectionQueue.put((E) Integer.valueOf("2"));
+        var result = this.selectionQueue.iterator().hasNext();
+        assertThat(this.selectionQueue.iterator().hasNext()).isTrue();
+        this.selectionQueue.get();
+        assertThat(this.selectionQueue.iterator().hasNext()).isFalse();
     }
 }
