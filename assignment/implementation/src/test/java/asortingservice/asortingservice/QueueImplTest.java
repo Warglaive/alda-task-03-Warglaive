@@ -2,7 +2,6 @@ package asortingservice;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import sortingservice.Queue;
 import sortingservice.SortKind;
 import sortingservice.SortingServiceFactory;
 
