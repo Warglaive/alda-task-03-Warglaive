@@ -71,12 +71,18 @@ public class QueueImplTest<E> {
     }
 
     @Test
-    void iterator() {
+    void iteratorHasNextTest() {
         this.selectionQueue.put((E) Integer.valueOf("1"));
         this.selectionQueue.put((E) Integer.valueOf("2"));
-        var result = this.selectionQueue.iterator().hasNext();
         assertThat(this.selectionQueue.iterator().hasNext()).isTrue();
         this.selectionQueue.get();
         assertThat(this.selectionQueue.iterator().hasNext()).isFalse();
+    }
+
+    @Test
+    void iteratorNextTest() {
+        this.selectionQueue.put((E) Integer.valueOf("1"));
+        this.selectionQueue.put((E) Integer.valueOf("2"));
+        assertThat(this.selectionQueue.iterator().next()).usingRecursiveComparison().isEqualTo(this.selectionQueue.getHeadNode().getNext());
     }
 }

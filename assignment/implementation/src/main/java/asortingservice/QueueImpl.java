@@ -84,7 +84,8 @@ public class QueueImpl<E> implements Queue<E> {
         if (isEmpty()) {
             return null;
         }
-        return this.headNode.item;    }
+        return this.headNode.item;
+    }
 
 
     @Override
