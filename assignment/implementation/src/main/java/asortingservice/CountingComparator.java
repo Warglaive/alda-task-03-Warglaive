@@ -17,12 +17,12 @@ public class CountingComparator<T> implements Comparator<T> {
         this.count.increment();
         return wrapped.compare(o1, o2);
     }
-
+/*
     public long getCount() {
         return this.count.longValue();
     }
 
     public Comparator<T> getWrapped() {
         return wrapped;
-    }
+    }*/
 }
