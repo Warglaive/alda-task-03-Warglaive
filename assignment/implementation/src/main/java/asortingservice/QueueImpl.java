@@ -11,7 +11,7 @@ public class QueueImpl<E> implements Queue<E> {
 
     private Node<E> headNode;
     private Node<E> tailNode;
-    long size;
+    private long size;
 
     QueueImpl() {
         this.headNode = null;
