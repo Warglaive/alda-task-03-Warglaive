@@ -7,7 +7,7 @@
         <groupId>nl.fontys.sebivenlo</groupId>
         <artifactId>sortingserviceparent</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>..</relativePath>
     </parent>
     <groupId>nl.fontys.sebivenlo.sortingservice</groupId>
     <artifactId>api</artifactId>

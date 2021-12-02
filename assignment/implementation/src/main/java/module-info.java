@@ -2,5 +2,5 @@ open module asortingservice {
     requires java.logging;
     requires sortingserviceapi;
     uses sortingservice.SortingServiceFactory;
-    uses asortingservice.SortingServices;
+    provides sortingservice.SortingServiceFactory with asortingservice.SortingServices;
 }
