@@ -1,5 +1,7 @@
 package sortingservice;
 
+import java.util.Iterator;
+
 /**
  * Simple FIFO queue.
  *

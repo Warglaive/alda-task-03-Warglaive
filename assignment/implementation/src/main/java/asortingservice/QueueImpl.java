@@ -87,12 +87,11 @@ public class QueueImpl<E> implements Queue<E> {
         return this.headNode.item;
     }
 
-
     @Override
     public Iterator<E> iterator() {
         //TODO: Implement
 
-        return new Iterator<>() {
+        return new Iterator<E>() {
             @Override
             public boolean hasNext() {
                 return headNode != tailNode;
@@ -103,6 +102,8 @@ public class QueueImpl<E> implements Queue<E> {
                 //TODO: May be wrong
                 return (E) headNode.getNext();
             }
+
         };
+
     }
 }
