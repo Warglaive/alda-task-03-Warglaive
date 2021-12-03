@@ -10,7 +10,7 @@ import java.util.Comparator;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-class SortingServicesTest {
+class SortingServicesTest<T> {
 
     SortingServiceFactory factory;
 
@@ -34,9 +34,22 @@ class SortingServicesTest {
 
     @Test
     void createSorter() {
-        var queue = this.factory.createPreferredQueue(SortKind.SELECTION);
+        Comparator<T> comparator = (f1, f2) -> {
+            Comparable compA = null;
+            Comparable compB = null;
 
-        Comparator<Integer> comparator = new CountingComparator<>((a, b) -> a.compareTo(b));
+            // getting fields from object f1,f2
+            compA =(Comparable) f1;
+            compB =(Comparable) f2;
+
+            // handling null comparators
+            if(compA == null)
+                return -1;
+            else if(compB == null)
+                return 1;
+
+            return compA.compareTo(compB);
+        };
         var sorter = this.factory.createSorter(SortKind.SELECTION, comparator);
         assertThat(sorter).isExactlyInstanceOf(SelectionSorter.class);
     }
