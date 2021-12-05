@@ -32,16 +32,14 @@ public class QueueImpl<E> implements Queue<E> {
         // If queue is empty, then new node is start and last both
         if (isEmpty()) {
             this.headNode = this.tailNode = tempNode;
-            this.size++;
-            return;
         } else {
             // Add the new node at the end of queue and change last
             //TODO: debug if lastNode has element and next is proper
             this.tailNode.setNext(tempNode);
             this.tailNode = tempNode;
             //increment size
-            this.size++;
         }
+        this.size++;
     }
 
     /**

@@ -68,7 +68,10 @@ public class QueueImplTest<E> {
         this.selectionQueue.put((E) Integer.valueOf("1"));
         assertThat(this.selectionQueue.peek()).isEqualTo(1);
     }
-
+    @Test
+    void peekNull() {
+        assertThat(this.selectionQueue.peek()).isNull();
+    }
     @Test
     void iteratorHasNextTest() {
         this.selectionQueue.put((E) Integer.valueOf("1"));
