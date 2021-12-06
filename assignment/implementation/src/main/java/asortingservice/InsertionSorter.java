@@ -32,7 +32,7 @@ public class InsertionSorter<E> implements Sorter<E> {
     }
 
     private void sortedInsert(Node<E> newNode) {
-        /* Special case for the head end */ 
+        /* Special case for the head end */
         if (sorted == null || this.comparator.compare(sorted.item, newNode.item) < 0) {
             newNode.setNext(sorted);
             sorted = newNode;
@@ -49,6 +49,7 @@ public class InsertionSorter<E> implements Sorter<E> {
 
     @Override
     public int compareTo(E b) {
-        return 0;
+        //TODO: MAy be buggy
+        return this.comparator.compare((E) this, b);
     }
 }
