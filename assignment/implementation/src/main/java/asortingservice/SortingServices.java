@@ -15,17 +15,18 @@ public class SortingServices implements SortingServiceFactory {
             Map.of(SortKind.SELECTION, () -> new QueueImpl());
 
     //TODO: Add more queue types kinds when ready
-    Map<SortKind, Function<Comparator, Sorter>> sorterMap = Map.of(SortKind.SELECTION, (comparator)
-            -> new SelectionSorter(comparator));
+    Map<SortKind, Function<Comparator, Sorter>> sorterMap = Map.of(
+            SortKind.SELECTION, (comparator) -> new SelectionSorter(comparator)
+            , SortKind.INSERTION, (comparator -> new InsertionSorter(comparator)));
 
     //TODO: Add more sorter kinds when ready
 
-    public SortingServices() {
-        this.sorterMap.put(SortKind.SELECTION, (comparator)
-                -> new SelectionSorter(comparator));
-        this.sorterMap.put(SortKind.INSERTION, (comparator)
-                -> new SelectionSorter(comparator));
-    }
+ /*   public SortingServices() {
+        this.sorterMap.put(Map.of(SortKind.SELECTION, (comparator)
+                -> new SelectionSorter(comparator)));
+     *//*   this.sorterMap.put(SortKind.INSERTION, (comparator)
+                -> new SelectionSorter(comparator));*//*
+    }*/
 
     @Override
     public <T> Queue<T> createPreferredQueue(SortKind forSorter) {
