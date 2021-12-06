@@ -31,12 +31,10 @@ public class SortingServices implements SortingServiceFactory {
     @Override
     public <T> Queue<T> createPreferredQueue(SortKind forSorter) {
         return this.queueMap.get(forSorter).get();
-        //TODO
     }
 
     @Override
     public <T> Sorter<T> createSorter(SortKind kind, Comparator<T> comparator) {
-        //TODO
         return this.sorterMap.get(kind).apply(comparator);
     }
 
