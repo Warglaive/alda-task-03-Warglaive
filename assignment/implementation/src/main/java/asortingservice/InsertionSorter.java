@@ -27,8 +27,10 @@ public class InsertionSorter<E> implements Sorter<E> {
             sortedInsert(current);
             // Update current
             current = next;
+            ((QueueImpl<E>) queue).setHeadNode(current);
         }
-        return null;
+
+        return queue;
     }
 
     private void sortedInsert(Node<E> newNode) {

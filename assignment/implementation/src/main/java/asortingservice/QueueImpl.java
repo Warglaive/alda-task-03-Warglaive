@@ -103,4 +103,16 @@ public class QueueImpl<E> implements Queue<E> {
     public Node<E> getHeadNode() {
         return headNode;
     }
+
+    public void setHeadNode(Node<E> headNode) {
+        this.headNode = headNode;
+    }
+
+    public Node<E> getTailNode() {
+        return tailNode;
+    }
+
+    public void setTailNode(Node<E> tailNode) {
+        this.tailNode = tailNode;
+    }
 }
