@@ -1,4 +1,3 @@
-/*
 package asortingservice;
 
 import org.junit.jupiter.api.BeforeEach;
@@ -58,4 +57,4 @@ class SortingServicesTest<T> {
     @Test
     void supportedSorters() {
     }
-}*/
+}
