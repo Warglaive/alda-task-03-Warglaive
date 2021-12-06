@@ -55,6 +55,8 @@ class SortingServicesTest<T> {
 
     @Test
     void supportedSorters() {
-        //TODO: Implement
+        var sortingServices= new SortingServices();
+        var result = sortingServices.supportedSorters();
+        assertThat(result).isNotEmpty();
     }
 }
