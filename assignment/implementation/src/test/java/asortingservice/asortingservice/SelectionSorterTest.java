@@ -31,6 +31,7 @@ class SelectionSorterTest {
 
     @Test
     void integerSortTest() {
+        //TODO: Fix Node's references
         Queue<Integer> queue = this.factory.createPreferredQueue(SortKind.SELECTION);
         //hardcoded elementsCount value for test purposes
         queue = fillRandom(5);

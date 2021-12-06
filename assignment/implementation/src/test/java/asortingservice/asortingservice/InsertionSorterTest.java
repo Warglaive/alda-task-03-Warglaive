@@ -25,10 +25,13 @@ public class InsertionSorterTest {
 
     @Test
     void sort() {
+        //TODO: Fix Node's references
         Queue<Integer> unsortedQueue;
         //hardcoded elementsCount value for test purposes
         unsortedQueue = fillRandom(5);
-        Queue<Integer> sortedQueue = this.sorter.sort(unsortedQueue);
+        QueueImpl<Integer> sortedQueue = new QueueImpl<>();
+
+        sortedQueue = (QueueImpl<Integer>) this.sorter.sort(unsortedQueue);
         assertThat(sortedQueue).isSameAs(unsortedQueue);
     }
 
