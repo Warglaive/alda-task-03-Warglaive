@@ -25,7 +25,7 @@ public class InsertionSorterTest {
 
     @Test
     void sort() {
-        Queue<Integer> unsortedQueue = this.factory.createPreferredQueue(SortKind.INSERTION);
+        Queue<Integer> unsortedQueue;
         //hardcoded elementsCount value for test purposes
         unsortedQueue = fillRandom(5);
         Queue<Integer> sortedQueue = this.sorter.sort(unsortedQueue);
