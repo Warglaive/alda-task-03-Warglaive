@@ -21,6 +21,8 @@ public class SortingServices implements SortingServiceFactory {
     //TODO: Add more sorter kinds when ready
 
     public SortingServices() {
+        this.sorterMap.put(SortKind.SELECTION, (comparator)
+                -> new SelectionSorter(comparator));
         this.sorterMap.put(SortKind.INSERTION, (comparator)
                 -> new SelectionSorter(comparator));
     }
