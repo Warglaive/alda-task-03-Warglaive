@@ -21,7 +21,8 @@ public class SortingServices implements SortingServiceFactory {
     //TODO: Add more sorter kinds when ready
 
     public SortingServices() {
-        //this.queueMap.put(SortKind.INSERTION, () -> new QueueImpl());
+        this.sorterMap.put(SortKind.INSERTION, (comparator)
+                -> new SelectionSorter(comparator));
     }
 
     @Override
@@ -42,7 +43,8 @@ public class SortingServices implements SortingServiceFactory {
     @Override
     public SortKind[] supportedSorters() {
         return new SortKind[]{
-                SortKind.SELECTION
+                SortKind.SELECTION,
+                SortKind.INSERTION
         };
     }
 }
