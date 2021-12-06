@@ -33,13 +33,13 @@ public class InsertionSorter<E> implements Sorter<E> {
 
     private void sortedInsert(Node<E> newNode) {
         /* Special case for the head end */
-        if (sorted == null || this.comparator.compare(sorted.item, newNode.item) < 0) {
+        if (sorted == null || this.comparator.compare(sorted.item, newNode.item) > 0) {
             newNode.setNext(sorted);
             sorted = newNode;
         } else {
             Node<E> current = sorted;
             /* Locate the node before the point of insertion */
-            while (current.getNext() != null && this.comparator.compare(sorted.item, newNode.item) > 0) {
+            while (current.getNext() != null && this.comparator.compare(sorted.item, newNode.item) < 0) {
                 current = current.getNext();
             }
             newNode.setNext(current.getNext());
