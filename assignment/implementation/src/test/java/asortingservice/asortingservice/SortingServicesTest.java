@@ -8,7 +8,6 @@ import sortingservice.SortingServiceFactory;
 import java.util.Comparator;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class SortingServicesTest<T> {
 
@@ -39,13 +38,13 @@ class SortingServicesTest<T> {
             Comparable compB = null;
 
             // getting fields from object f1,f2
-            compA =(Comparable) f1;
-            compB =(Comparable) f2;
+            compA = (Comparable) f1;
+            compB = (Comparable) f2;
 
             // handling null comparators
-            if(compA == null)
+            if (compA == null)
                 return -1;
-            else if(compB == null)
+            else if (compB == null)
                 return 1;
 
             return compA.compareTo(compB);
@@ -56,5 +55,6 @@ class SortingServicesTest<T> {
 
     @Test
     void supportedSorters() {
+        //TODO: Implement
     }
 }

@@ -5,9 +5,6 @@ import sortingservice.Queue;
 import java.util.Iterator;
 
 public class QueueImpl<E> implements Queue<E> {
-    public Node<E> getHeadNode() {
-        return headNode;
-    }
 
     private Node<E> headNode;
     private Node<E> tailNode;
@@ -18,7 +15,6 @@ public class QueueImpl<E> implements Queue<E> {
         this.tailNode = null;
         this.size = 0;
     }
-
 
     /**
      * enqueue
@@ -102,6 +98,9 @@ public class QueueImpl<E> implements Queue<E> {
             }
 
         };
+    }
 
+    public Node<E> getHeadNode() {
+        return headNode;
     }
 }
