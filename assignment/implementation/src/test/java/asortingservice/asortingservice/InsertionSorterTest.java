@@ -27,13 +27,14 @@ public class InsertionSorterTest {
     void sort() {
         Queue<Integer> unsortedQueue = this.factory.createPreferredQueue(SortKind.INSERTION);
         //hardcoded elementsCount value for test purposes
-        unsortedQueue = fillRandom(unsortedQueue, 5);
+        unsortedQueue = fillRandom(5);
         Queue<Integer> sortedQueue = this.sorter.sort(unsortedQueue);
         assertThat(sortedQueue).isSameAs(unsortedQueue);
     }
 
-    Queue<Integer> fillRandom(Queue<Integer> unsortedQueue, int elementsCount) {
+    Queue<Integer> fillRandom(int elementsCount) {
         //make unsorted queue
+        Queue<Integer> unsortedQueue = new QueueImpl<>();
         for (int i = elementsCount; i > 0; i--) {
             unsortedQueue.put(i);
         }
