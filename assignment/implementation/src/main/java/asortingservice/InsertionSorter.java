@@ -6,6 +6,8 @@ import sortingservice.Sorter;
 public class InsertionSorter<E> implements Sorter<E> {
     @Override
     public Queue<E> sort(Queue<E> queue) {
+
+
         return null;
     }
 
