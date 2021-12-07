@@ -48,7 +48,10 @@ public class QueueImplTest<E> {
         this.selectionQueue.put(putItem);
         assertThat(this.selectionQueue.get()).usingRecursiveComparison().isEqualTo(expectedItem);
     }
-
+    @Test
+    void getNull() {
+        assertThat(this.selectionQueue.get()).usingRecursiveComparison().isNull();
+    }
     @Test
     void isEmpty() {
         assertThat(this.selectionQueue.isEmpty()).isTrue();
