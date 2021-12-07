@@ -62,6 +62,8 @@ public interface Queue<E> extends Iterable<E> {
      *
      * @return
      */
+/*
     E peek();
+*/
 
 }
