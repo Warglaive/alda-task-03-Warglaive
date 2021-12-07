@@ -28,14 +28,36 @@ public class InsertionSorterTest {
         //TODO: Fix Node's references
         Queue<Integer> unsortedQueue;
         //hardcoded elementsCount value for test purposes
-        unsortedQueue = fillRandom(5);
+        unsortedQueue = fillUnsorted(5);
         QueueImpl<Integer> sortedQueue = new QueueImpl<>();
 
         sortedQueue = (QueueImpl<Integer>) this.sorter.sort(unsortedQueue);
         assertThat(sortedQueue).isSameAs(unsortedQueue);
     }
 
-    Queue<Integer> fillRandom(int elementsCount) {
+    @Test
+    void nextNotNullSortTest() {
+        Queue<Integer> unsortedQueue = fillSorted(5);
+        QueueImpl<Integer> sortedQueue = (QueueImpl<Integer>) this.sorter.sort(unsortedQueue);
+
+        assertThat(sortedQueue).isSameAs(unsortedQueue);
+    }
+
+    Queue<Integer> fillSorted(int elementsCount) {
+        Queue<Integer> unsortedQueue = new QueueImpl<>();
+        for (int i = 0; i < elementsCount; i++) {
+            unsortedQueue.put(i);
+        }
+        return unsortedQueue;
+    }
+
+    /**
+     * helper
+     *
+     * @param elementsCount
+     * @return
+     */
+    Queue<Integer> fillUnsorted(int elementsCount) {
         //make unsorted queue
         Queue<Integer> unsortedQueue = new QueueImpl<>();
         for (int i = elementsCount; i > 0; i--) {

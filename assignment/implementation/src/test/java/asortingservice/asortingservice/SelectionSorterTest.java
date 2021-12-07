@@ -34,12 +34,12 @@ class SelectionSorterTest {
         //TODO: Fix Node's references
         Queue<Integer> queue = this.factory.createPreferredQueue(SortKind.SELECTION);
         //hardcoded elementsCount value for test purposes
-        queue = fillRandom(5);
+        queue = fillUnsorted(5);
         Queue<Integer> sortedQueue = this.sorter.sort(queue);
         assertThat(sortedQueue).isSameAs(queue);
     }
 
-    Queue<Integer> fillRandom(int elementsCount) {
+    Queue<Integer> fillUnsorted(int elementsCount) {
         //make unsorted queue
         Queue<Integer> unsortedQueue = new QueueImpl<>();
         for (int i = elementsCount; i > 0; i--) {
