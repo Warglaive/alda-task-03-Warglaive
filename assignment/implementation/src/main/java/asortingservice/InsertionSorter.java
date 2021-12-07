@@ -39,7 +39,7 @@ public class InsertionSorter<E> implements Sorter<E> {
         /* Special case for the head end */
         if (sorted == null || this.comparator.compare(sorted.item, newNode.item) > 0) {
             newNode.setNext(sorted);
-            // sorted = newNode;
+             sorted = newNode;
         } else {
             Node<E> current = sorted;
             /* Locate the node before the point of insertion */
