@@ -23,7 +23,7 @@ public class InsertionSorter<E> implements Sorter<E> {
             // Store next for next iteration
             Node<E> next = current.getNext();
             // insert current in sorted linked list
-            sortedInsert(current, sorted);
+            sorted = sortedInsert(current, sorted);
             // Update current
             current = next;
 
@@ -35,11 +35,11 @@ public class InsertionSorter<E> implements Sorter<E> {
         return queue;
     }
 
-    private void sortedInsert(Node<E> newNode, Node<E> sorted) {
+    private Node<E> sortedInsert(Node<E> newNode, Node<E> sorted) {
         /* Special case for the head end */
         if (sorted == null || this.comparator.compare(sorted.item, newNode.item) > 0) {
             newNode.setNext(sorted);
-           // sorted = newNode;
+            // sorted = newNode;
         } else {
             Node<E> current = sorted;
             /* Locate the node before the point of insertion */
@@ -49,6 +49,7 @@ public class InsertionSorter<E> implements Sorter<E> {
             newNode.setNext(current.getNext());
             current.setNext(newNode);
         }
+        return sorted;
     }
 
     @Override
