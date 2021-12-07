@@ -48,10 +48,12 @@ public class QueueImplTest<E> {
         this.selectionQueue.put(putItem);
         assertThat(this.selectionQueue.get()).usingRecursiveComparison().isEqualTo(expectedItem);
     }
+
     @Test
     void getNull() {
         assertThat(this.selectionQueue.get()).usingRecursiveComparison().isNull();
     }
+
     @Test
     void isEmpty() {
         assertThat(this.selectionQueue.isEmpty()).isTrue();
@@ -71,10 +73,12 @@ public class QueueImplTest<E> {
         this.selectionQueue.put((E) Integer.valueOf("1"));
         assertThat(this.selectionQueue.peek()).isEqualTo(1);
     }
+
     @Test
     void peekNull() {
         assertThat(this.selectionQueue.peek()).isNull();
     }
+
     @Test
     void iteratorHasNextTest() {
         this.selectionQueue.put((E) Integer.valueOf("1"));
