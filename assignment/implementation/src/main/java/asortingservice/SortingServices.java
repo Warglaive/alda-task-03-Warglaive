@@ -45,8 +45,8 @@ public class SortingServices implements SortingServiceFactory {
     @Override
     public SortKind[] supportedSorters() {
         return new SortKind[]{
-                SortKind.SELECTION,
-                SortKind.INSERTION
+                SortKind.SELECTION/*,
+                SortKind.INSERTION*/
         };
     }
 }
