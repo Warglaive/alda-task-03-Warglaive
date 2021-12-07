@@ -24,12 +24,17 @@ class SortingServicesTest<T> {
     }
 
     @Test
-    void createPreferredQueue() {
+    void createPreferredQueueSelectionTest() {
         var actual = this.factory.createPreferredQueue(SortKind.SELECTION);
         var expected = new QueueImpl<>();
         assertThat(actual).usingRecursiveComparison().isEqualTo(expected);
     }
-
+    @Test
+    void createPreferredQueueInsertionTest() {
+        var actual = this.factory.createPreferredQueue(SortKind.INSERTION);
+        var expected = new QueueImpl<>();
+        assertThat(actual).usingRecursiveComparison().isEqualTo(expected);
+    }
     private Comparator<T> comparator;
 
     @Test
