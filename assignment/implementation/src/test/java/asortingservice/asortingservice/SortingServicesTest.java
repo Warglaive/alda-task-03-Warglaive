@@ -28,12 +28,13 @@ class SortingServicesTest<T> {
         var actual = this.factory.createPreferredQueue(SortKind.SELECTION);
         var expected = new QueueImpl<>();
         assertThat(actual).usingRecursiveComparison().isEqualTo(expected);
-
     }
+
+    private Comparator<T> comparator;
 
     @Test
     void createSorter() {
-        Comparator<T> comparator = (f1, f2) -> {
+        this.comparator = (f1, f2) -> {
             Comparable compA = null;
             Comparable compB = null;
 
@@ -49,14 +50,21 @@ class SortingServicesTest<T> {
 
             return compA.compareTo(compB);
         };
-        var sorter = this.factory.createSorter(SortKind.SELECTION, comparator);
+        var sorter = this.factory.createSorter(SortKind.SELECTION, this.comparator);
         assertThat(sorter).isExactlyInstanceOf(SelectionSorter.class);
     }
 
     @Test
     void supportedSorters() {
-        var sortingServices= new SortingServices();
-        var result = sortingServices.supportedSorters();
+        var result = this.factory.supportedSorters();
         assertThat(result).isNotEmpty();
+    }
+
+    /**
+     * TODO: Test defaults
+     */
+    @Test
+    void createSorterDefaultTest() {
+        assertThat(this.factory.createSorter("asd", this.comparator)).isNull();
     }
 }
