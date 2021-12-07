@@ -40,9 +40,7 @@ public class InsertionSorterTest {
     @Test
     void compareToTest() {
         InsertionSorter<Integer> sorter = new InsertionSorter<>(this.comparator);
-        ThrowableAssert.ThrowingCallable code = () -> {
-            sorter.compareTo(1);
-        };
+        ThrowableAssert.ThrowingCallable code = () -> sorter.compareTo(1);
         assertThatThrownBy(code).isExactlyInstanceOf(ClassCastException.class);
     }
 
