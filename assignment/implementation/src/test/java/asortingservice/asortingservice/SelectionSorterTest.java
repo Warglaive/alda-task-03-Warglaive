@@ -32,11 +32,22 @@ class SelectionSorterTest {
     @Test
     void integerSortTest() {
         //TODO: Fix Node's references
-        Queue<Integer> queue = this.factory.createPreferredQueue(SortKind.SELECTION);
+        Queue<Integer> unsortedQueue = this.factory.createPreferredQueue(SortKind.SELECTION);
         //hardcoded elementsCount value for test purposes
-        queue = fillUnsorted(5);
-        Queue<Integer> sortedQueue = this.sorter.sort(queue);
-        assertThat(sortedQueue).isSameAs(queue);
+        unsortedQueue = fillUnsorted(5);
+        var sortedQueue = new QueueImpl<Integer>();
+        sortedQueue = (QueueImpl<Integer>) fillSorted(5);
+
+        //TODO: FIX
+        assertThat(sortedQueue).usingRecursiveComparison().isEqualTo(unsortedQueue);
+    }
+
+    Queue<Integer> fillSorted(int elementsCount) {
+        Queue<Integer> unsortedQueue = new QueueImpl<>();
+        for (int i = 1; i <= elementsCount; i++) {
+            unsortedQueue.put(i);
+        }
+        return unsortedQueue;
     }
 
     Queue<Integer> fillUnsorted(int elementsCount) {
