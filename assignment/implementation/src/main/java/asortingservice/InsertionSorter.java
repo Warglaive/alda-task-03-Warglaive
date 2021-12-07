@@ -7,7 +7,6 @@ import java.util.Comparator;
 
 public class InsertionSorter<E> implements Sorter<E> {
     private Comparator<E> comparator;
-    Node<E> sorted;
 
     public InsertionSorter(Comparator<E> comparator) {
         this.comparator = comparator;
@@ -15,7 +14,7 @@ public class InsertionSorter<E> implements Sorter<E> {
 
     @Override
     public Queue<E> sort(Queue<E> queue) {
-        this.sorted = null;
+        Node<E> sorted = null;
         //get head node
         Node<E> current = ((QueueImpl<E>) queue).getHeadNode();
         // Traverse the given linked list and insert every
@@ -24,7 +23,7 @@ public class InsertionSorter<E> implements Sorter<E> {
             // Store next for next iteration
             Node<E> next = current.getNext();
             // insert current in sorted linked list
-            sortedInsert(current);
+            sortedInsert(current, sorted);
             // Update current
             current = next;
 
@@ -36,11 +35,11 @@ public class InsertionSorter<E> implements Sorter<E> {
         return queue;
     }
 
-    private void sortedInsert(Node<E> newNode) {
+    private void sortedInsert(Node<E> newNode, Node<E> sorted) {
         /* Special case for the head end */
         if (sorted == null || this.comparator.compare(sorted.item, newNode.item) > 0) {
             newNode.setNext(sorted);
-            sorted = newNode;
+           // sorted = newNode;
         } else {
             Node<E> current = sorted;
             /* Locate the node before the point of insertion */
