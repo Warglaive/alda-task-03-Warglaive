@@ -1,5 +1,6 @@
 package asortingservice;
 
+import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import sortingservice.Queue;
@@ -9,6 +10,7 @@ import sortingservice.Sorter;
 import java.util.Comparator;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
+import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 public class InsertionSorterTest {
 
@@ -33,6 +35,15 @@ public class InsertionSorterTest {
 
         sortedQueue = (QueueImpl<Integer>) this.sorter.sort(unsortedQueue);
         assertThat(sortedQueue).isSameAs(unsortedQueue);
+    }
+
+    @Test
+    void compareToTest() {
+        InsertionSorter<Integer> sorter = new InsertionSorter<>(this.comparator);
+        ThrowableAssert.ThrowingCallable code = () -> {
+            sorter.compareTo(1);
+        };
+        assertThatThrownBy(code).isExactlyInstanceOf(ClassCastException.class);
     }
 
     @Test
