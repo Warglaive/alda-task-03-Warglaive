@@ -72,4 +72,14 @@ class SortingServicesTest<T> {
     void createPreferredQueueDefaultTest() {
         assertThat(this.factory.createPreferredQueue("asd")).isNull();
     }
+
+    @Test
+    void extraSortersDefaultTest() {
+        assertThat(this.factory.extraSorters()).isEmpty();
+    }
+
+    @Test
+    void supportedSortersDefaultTest() {
+        assertThat(this.factory.supportedSorters()).isNotEmpty();
+    }
 }
