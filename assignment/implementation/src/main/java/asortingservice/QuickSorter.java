@@ -1,3 +1,4 @@
+/*
 package asortingservice;
 
 import sortingservice.Queue;
@@ -22,3 +23,4 @@ public class QuickSorter<E> implements Sorter<E> {
         return 0;
     }
 }
+*/
