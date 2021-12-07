@@ -67,4 +67,9 @@ class SortingServicesTest<T> {
     void createSorterDefaultTest() {
         assertThat(this.factory.createSorter("asd", this.comparator)).isNull();
     }
+
+    @Test
+    void createPreferredQueueDefaultTest() {
+        assertThat(this.factory.createPreferredQueue("asd")).isNull();
+    }
 }
