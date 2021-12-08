@@ -41,12 +41,12 @@ public class InsertionSorterTest {
     }
 
 
-    @Test
+  /*  @Test
     void compareToTest() {
         InsertionSorter<Integer> sorter = new InsertionSorter<>(this.comparator);
         ThrowableAssert.ThrowingCallable code = () -> sorter.compareTo(1);
         assertThatThrownBy(code).isExactlyInstanceOf(ClassCastException.class);
-    }
+    }*/
 
     @Test
     void nextNotNullSortTest() {

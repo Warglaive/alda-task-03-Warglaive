@@ -63,12 +63,12 @@ class SelectionSorterTest {
         return unsortedQueue;
     }
 
-    @Test
+   /* @Test
     void compareToTest() {
         SelectionSorter<Integer> sorter = new SelectionSorter<>(this.comparator);
         ThrowableAssert.ThrowingCallable code = () -> {
             sorter.compareTo(1);
         };
         assertThatThrownBy(code).isExactlyInstanceOf(ClassCastException.class);
-    }
+    }*/
 }
