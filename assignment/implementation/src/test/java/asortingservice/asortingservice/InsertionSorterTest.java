@@ -48,17 +48,18 @@ public class InsertionSorterTest {
         }
     }
 
-    @Test
+   /* @Test
     void stringSortTest() {
         Queue<String> unsortedQueue = new QueueImpl<>();
         unsortedQueue.put("c");
         unsortedQueue.put("b");
         unsortedQueue.put("a");
-        var result = this.stringSorter.sort(unsortedQueue);
-        for (int i = 0; i < result.size(); i++) {
+        var result = new QueueImpl<>();
+        result
+        for (int i = 0; i <= result.size(); i++) {
             System.out.println(result.get());
         }
-    }
+    }*/
 
   /*  @Test
     void compareToTest() {
