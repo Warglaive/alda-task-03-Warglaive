@@ -37,6 +37,7 @@ class SelectionSorterTest {
         unsortedQueue = fillUnsorted(5);
         var sortedQueue = new QueueImpl<Integer>();
         sortedQueue = (QueueImpl<Integer>) fillSorted(5);
+        //sort
         unsortedQueue = this.sorter.sort(unsortedQueue);
         //TODO:
         for (int i = 0; i < unsortedQueue.size(); i++) {
