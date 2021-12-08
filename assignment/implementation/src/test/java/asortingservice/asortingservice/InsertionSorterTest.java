@@ -1,6 +1,5 @@
 package asortingservice;
 
-import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import sortingservice.Queue;
@@ -15,14 +14,23 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 public class InsertionSorterTest {
 
     private SortingServices factory;
-    private Comparator<Integer> comparator;
-    private Sorter<Integer> sorter;
+    private Comparator<Integer> integerComparator;
+    private Sorter<Integer> integerSorter;
+
+
+    private Comparator<String> stringComparator;
+    private Sorter<String> stringSorter;
+
 
     @BeforeEach
     void setUp() {
         this.factory = new SortingServices();
-        this.comparator = new CountingComparator<>((a, b) -> a.compareTo(b));
-        this.sorter = this.factory.createSorter(SortKind.INSERTION, this.comparator);
+        //Integer
+        this.integerComparator = new CountingComparator<>((a, b) -> a.compareTo(b));
+        this.integerSorter = this.factory.createSorter(SortKind.INSERTION, this.integerComparator);
+        //String
+        this.stringComparator = new CountingComparator<>((a, b) -> a.compareTo(b));
+        this.stringSorter = this.factory.createSorter(SortKind.INSERTION, this.stringComparator);
     }
 
     @Test
@@ -33,13 +41,24 @@ public class InsertionSorterTest {
         unsortedQueue = fillUnsorted(5);
         var sortedQueue = new QueueImpl<Integer>();
         sortedQueue = (QueueImpl<Integer>) fillSorted(5);
-        unsortedQueue = this.sorter.sort(unsortedQueue);
+        unsortedQueue = this.integerSorter.sort(unsortedQueue);
         //TODO:
         for (int i = 0; i < unsortedQueue.size(); i++) {
             assertThat(unsortedQueue.get()).isEqualTo(sortedQueue.get());
         }
     }
 
+    @Test
+    void stringSortTest() {
+        Queue<String> unsortedQueue = new QueueImpl<>();
+        unsortedQueue.put("c");
+        unsortedQueue.put("b");
+        unsortedQueue.put("a");
+        var result = this.stringSorter.sort(unsortedQueue);
+        for (int i = 0; i < result.size(); i++) {
+            System.out.println(result.get());
+        }
+    }
 
   /*  @Test
     void compareToTest() {
@@ -51,7 +70,7 @@ public class InsertionSorterTest {
     @Test
     void nextNotNullSortTest() {
         Queue<Integer> unsortedQueue = fillSorted(5);
-        QueueImpl<Integer> sortedQueue = (QueueImpl<Integer>) this.sorter.sort(unsortedQueue);
+        QueueImpl<Integer> sortedQueue = (QueueImpl<Integer>) this.integerSorter.sort(unsortedQueue);
 
         assertThat(sortedQueue).isSameAs(unsortedQueue);
     }
