@@ -9,9 +9,6 @@ public class Node<E> {
      *
      * @param item
      */
-    Node(E item) {
-        this.item = item;
-    }
 
     Node(E item, Node<E> next) {
         this.item = item;
