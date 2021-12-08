@@ -1,6 +1,7 @@
 package asortingservice;
 
-public class Node<E> {
+
+public class Node<E>{
     E item;
     private Node<E> next;
 
