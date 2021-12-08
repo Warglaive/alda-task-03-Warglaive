@@ -37,9 +37,12 @@ class SelectionSorterTest {
         unsortedQueue = fillUnsorted(5);
         var sortedQueue = new QueueImpl<Integer>();
         sortedQueue = (QueueImpl<Integer>) fillSorted(5);
-
-        //TODO: FIX
-        assertThat(sortedQueue).usingRecursiveComparison().isEqualTo(unsortedQueue);
+        unsortedQueue = this.sorter.sort(unsortedQueue);
+        //TODO:
+        for (int i = 0; i < unsortedQueue.size(); i++) {
+            assertThat(unsortedQueue.get()).isEqualTo(sortedQueue.get());
+        }
+        //assertThat(sortedQueue).usingRecursiveComparison().isEqualTo(unsortedQueue);
     }
 
     Queue<Integer> fillSorted(int elementsCount) {
