@@ -6,8 +6,8 @@ import java.util.Iterator;
 
 public class QueueImpl<E> implements Queue<E> {
 
-    private Node headNode;
-    private Node tailNode;
+    private Node<E> headNode;
+    private Node<E> tailNode;
     private long size;
 
     QueueImpl() {
@@ -77,7 +77,7 @@ public class QueueImpl<E> implements Queue<E> {
         if (isEmpty()) {
             return null;
         }
-        return (E) this.headNode.item;
+        return this.headNode.item;
     }
 
     @Override
