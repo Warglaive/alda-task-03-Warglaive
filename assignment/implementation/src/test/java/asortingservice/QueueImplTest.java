@@ -82,7 +82,7 @@ public class QueueImplTest {
     @Test
     void iteratorHasNextTest() {
         this.selectionQueue.put(1);
-        this.selectionQueue.put(1);
+        this.selectionQueue.put(2);
         assertThat(this.selectionQueue.iterator().hasNext()).isTrue();
         this.selectionQueue.get();
         this.selectionQueue.get();
