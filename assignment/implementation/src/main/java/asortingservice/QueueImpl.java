@@ -100,7 +100,6 @@ public class QueueImpl<E> implements Queue<E> {
                 current = current.getNext();
                 return tempItem;
             }
-
         };
     }
 

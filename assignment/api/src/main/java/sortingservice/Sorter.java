@@ -19,5 +19,4 @@ public interface Sorter<T> {
      */
     Queue<T> sort(Queue<T> q);
 
-    //int compareTo(T b);
 }

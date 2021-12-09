@@ -14,42 +14,42 @@ public class InsertionSorter<E> implements Sorter<E> {
 
     @Override
     public Queue<E> sort(Queue<E> queue) {
-        Node<E> sorted = null;
-        //get head node
-        Node<E> current = ((QueueImpl<E>) queue).getHeadNode();
-        // Traverse the given linked list and insert every
-        // node to sorted
-        while (current != null) {
-            // Store next for next iteration
-            Node<E> next = current.getNext();
-            // insert current in sorted linked list
-            sorted = sortedInsert(current, sorted);
-            // Update current
-            current = next;
-
-        }
-        var tempHeadNode = ((QueueImpl<E>) queue).getHeadNode();
-        var tempTailNode = ((QueueImpl<E>) queue).getTailNode();
-        ((QueueImpl<E>) queue).setHeadNode(tempTailNode);
-         ((QueueImpl<E>) queue).setTailNode(tempHeadNode);
-
-        return queue;
-    }
-
-    private Node<E> sortedInsert(Node<E> newNode, Node<E> sorted) {
-        /* Special case for the head end */
-        if (sorted == null || this.comparator.compare(sorted.item, newNode.item) > 0) {
-            newNode.setNext(sorted);
-            sorted = newNode;
-        } else {
-            Node<E> current = sorted;
-            /* Locate the node before the point of insertion */
-            while (current.getNext() != null && this.comparator.compare(sorted.item, newNode.item) < 0) {
-                current = current.getNext();
+     /*   var queueImpl = (QueueImpl) queue;
+        var sorted = new Node<>();
+        Node headRef = queueImpl.getHeadNode();
+        // sort a singly linked list using insertion sort
+        void insertion_Sort (Node headRef){
+            // initially, no nodes in sorted list so its set to null
+            sorted = null;
+            Node current = headRef;
+            // traverse the linked list and add sorted node to sorted list
+            while (current != null) {
+                // Store current.next in next
+                Node next = current.next;
+                // current node goes in sorted list
+                Insert_sorted(current);
+                // now next becomes current
+                current = next;
             }
-            newNode.setNext(current.getNext());
-            current.setNext(newNode);
+            // update head to point to linked list
+            head = sorted;
         }
-        return sorted;
+
+        //insert a new node in sorted list
+        void Insert_sorted (node newNode){
+            //for head node
+            if (sorted == null || sorted.val >= newNode.val) {
+                newNode.next = sorted;
+                sorted = newNode;
+            } else {
+                node current = sorted;
+                //find the node and then insert
+                while (current.next != null && current.next.val < newNode.val) {
+                    current = current.next;
+                }
+                newNode.next = current.next;
+                current.next = newNode;
+            }
+        }*/
     }
 }
