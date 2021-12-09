@@ -1,5 +1,6 @@
 package asortingservice;
 
+import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import sortingservice.Queue;
@@ -48,25 +49,18 @@ public class InsertionSorterTest {
         }
     }
 
-   /* @Test
+    @Test
     void stringSortTest() {
         Queue<String> unsortedQueue = new QueueImpl<>();
         unsortedQueue.put("c");
         unsortedQueue.put("b");
         unsortedQueue.put("a");
         var result = new QueueImpl<>();
-        result
+
         for (int i = 0; i <= result.size(); i++) {
             System.out.println(result.get());
         }
-    }*/
-
-  /*  @Test
-    void compareToTest() {
-        InsertionSorter<Integer> sorter = new InsertionSorter<>(this.comparator);
-        ThrowableAssert.ThrowingCallable code = () -> sorter.compareTo(1);
-        assertThatThrownBy(code).isExactlyInstanceOf(ClassCastException.class);
-    }*/
+    }
 
     @Test
     void nextNotNullSortTest() {
