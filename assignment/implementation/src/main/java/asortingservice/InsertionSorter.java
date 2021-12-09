@@ -28,9 +28,10 @@ public class InsertionSorter<E> implements Sorter<E> {
             current = next;
 
         }
+        var tempHeadNode = ((QueueImpl<E>) queue).getHeadNode();
         var tempTailNode = ((QueueImpl<E>) queue).getTailNode();
         ((QueueImpl<E>) queue).setHeadNode(tempTailNode);
-       // ((QueueImpl<E>) queue).setTailNode(null);
+         ((QueueImpl<E>) queue).setTailNode(tempHeadNode);
 
         return queue;
     }
@@ -39,7 +40,7 @@ public class InsertionSorter<E> implements Sorter<E> {
         /* Special case for the head end */
         if (sorted == null || this.comparator.compare(sorted.item, newNode.item) > 0) {
             newNode.setNext(sorted);
-             sorted = newNode;
+            sorted = newNode;
         } else {
             Node<E> current = sorted;
             /* Locate the node before the point of insertion */
