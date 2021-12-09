@@ -90,17 +90,12 @@ public class QueueImpl<E> implements Queue<E> {
 
             @Override
             public boolean hasNext() {
-/*
-                return current != tailNode;
-*/
                 return current != null;
             }
 
             @Override
             public E next() {
-                //TODO: May be wrong
                 if (!hasNext()) throw new NoSuchElementException();
-
                 var tempItem = current.item;
                 current = current.getNext();
                 return tempItem;
