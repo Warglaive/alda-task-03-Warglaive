@@ -3,6 +3,7 @@ package asortingservice;
 import sortingservice.Queue;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 public class QueueImpl<E> implements Queue<E> {
 
@@ -98,6 +99,8 @@ public class QueueImpl<E> implements Queue<E> {
             @Override
             public E next() {
                 //TODO: May be wrong
+                if (!hasNext()) throw new NoSuchElementException();
+
                 var tempItem = current.item;
                 current = current.getNext();
                 return tempItem;

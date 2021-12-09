@@ -10,10 +10,10 @@ public class Node<E> {
      * @param item
      */
 
-    public Node(E item) {
+ /*   public Node(E item) {
         this.item = item;
         this.next = null;
-    }
+    }*/
 
     Node(E item, Node<E> next) {
         this.item = item;

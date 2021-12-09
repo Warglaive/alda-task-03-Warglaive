@@ -93,10 +93,21 @@ public class QueueImplTest {
     void iteratorNextTest() {
         this.selectionQueue.put(1);
         this.selectionQueue.put(2);
+        this.selectionQueue.put(3);
         var tempQueue = new QueueImpl<Integer>();
         for (Integer a : this.selectionQueue) {
             tempQueue.put(a);
         }
         assertThat(this.selectionQueue).usingRecursiveComparison().isEqualTo(tempQueue);
     }
+
+   /* @Test
+    void compareQueuesInsertionTest() {
+        var first = this.factory.createPreferredQueue(SortKind.INSERTION);
+        for (int i = 0; i < 5999; i++) {
+            first.put(i);
+            System.out.println(first.iterator().next());
+
+        }
+    }*/
 }
