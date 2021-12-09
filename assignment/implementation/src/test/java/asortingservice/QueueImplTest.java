@@ -7,14 +7,14 @@ import sortingservice.SortingServiceFactory;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-public class QueueImplTest<E> {
-    QueueImpl<E> selectionQueue;
+public class QueueImplTest {
+    QueueImpl<Integer> selectionQueue;
     SortingServiceFactory factory;
 
     @BeforeEach
     void setUp() {
         this.factory = new SortingServices();
-        this.selectionQueue = (QueueImpl<E>) this.factory.createPreferredQueue(SortKind.SELECTION);
+        this.selectionQueue = (QueueImpl) this.factory.createPreferredQueue(SortKind.SELECTION);
     }
 
     @Test
@@ -29,13 +29,13 @@ public class QueueImplTest<E> {
 
     @Test
     void getHeadNodeNotNullTest() {
-        this.selectionQueue.put((E) new Object());
+        this.selectionQueue.put(1);
         assertThat(this.selectionQueue.getHeadNode()).isNotNull();
     }
 
     @Test
     void put() {
-        E item = (E) Integer.valueOf("1");
+        int item = 1;
         this.selectionQueue.put(item);
         assertThat(this.selectionQueue.getHeadNode()).isNotNull();
 
@@ -43,8 +43,8 @@ public class QueueImplTest<E> {
 
     @Test
     void get() {
-        E putItem = (E) Integer.valueOf("1");
-        E expectedItem = (E) Integer.valueOf("1");
+        int putItem = 1;
+        int expectedItem = 1;
         this.selectionQueue.put(putItem);
         assertThat(this.selectionQueue.get()).usingRecursiveComparison().isEqualTo(expectedItem);
     }
@@ -57,20 +57,20 @@ public class QueueImplTest<E> {
     @Test
     void isEmpty() {
         assertThat(this.selectionQueue.isEmpty()).isTrue();
-        this.selectionQueue.put((E) Integer.valueOf("1"));
+        this.selectionQueue.put(1);
         assertThat(this.selectionQueue.isEmpty()).isFalse();
     }
 
     @Test
     void size() {
-        this.selectionQueue.put((E) Integer.valueOf("1"));
+        this.selectionQueue.put(1);
         long expectedSize = 1;
         assertThat(this.selectionQueue.size()).isEqualTo(expectedSize);
     }
 
     @Test
     void peek() {
-        this.selectionQueue.put((E) Integer.valueOf("1"));
+        this.selectionQueue.put(1);
         assertThat(this.selectionQueue.peek()).isEqualTo(1);
     }
 
@@ -81,17 +81,22 @@ public class QueueImplTest<E> {
 
     @Test
     void iteratorHasNextTest() {
-        this.selectionQueue.put((E) Integer.valueOf("1"));
-        this.selectionQueue.put((E) Integer.valueOf("2"));
+        this.selectionQueue.put(1);
+        this.selectionQueue.put(1);
         assertThat(this.selectionQueue.iterator().hasNext()).isTrue();
+        this.selectionQueue.get();
         this.selectionQueue.get();
         assertThat(this.selectionQueue.iterator().hasNext()).isFalse();
     }
 
     @Test
     void iteratorNextTest() {
-        this.selectionQueue.put((E) Integer.valueOf("1"));
-        this.selectionQueue.put((E) Integer.valueOf("2"));
-        assertThat(this.selectionQueue.iterator().next()).usingRecursiveComparison().isEqualTo(this.selectionQueue.getHeadNode().getNext());
+        this.selectionQueue.put(1);
+        this.selectionQueue.put(2);
+        var tempQueue = new QueueImpl<Integer>();
+        for (Integer a : this.selectionQueue) {
+            tempQueue.put(a);
+        }
+        assertThat(this.selectionQueue).usingRecursiveComparison().isEqualTo(tempQueue);
     }
 }
