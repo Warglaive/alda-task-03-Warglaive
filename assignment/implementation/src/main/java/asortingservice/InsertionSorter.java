@@ -30,7 +30,7 @@ public class InsertionSorter<E> implements Sorter<E> {
         }
         var tempTailNode = ((QueueImpl<E>) queue).getTailNode();
         ((QueueImpl<E>) queue).setHeadNode(tempTailNode);
-        ((QueueImpl<E>) queue).setTailNode(null);
+       // ((QueueImpl<E>) queue).setTailNode(null);
 
         return queue;
     }

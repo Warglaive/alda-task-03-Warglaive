@@ -55,8 +55,8 @@ public class InsertionSorterTest {
         unsortedQueue.put("c");
         unsortedQueue.put("b");
         unsortedQueue.put("a");
-        var result = new QueueImpl<>();
-
+        Queue<String> result = new QueueImpl<>();
+        result = stringSorter.sort(unsortedQueue);
         for (int i = 0; i <= result.size(); i++) {
             System.out.println(result.get());
         }
