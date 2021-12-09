@@ -85,7 +85,7 @@ public class QueueImpl<E> implements Queue<E> {
     public Iterator<E> iterator() {
         //TODO: Implement
 
-        return new Iterator<E>() {
+        return new Iterator<>() {
             Node<E> current = headNode;
 
             @Override
