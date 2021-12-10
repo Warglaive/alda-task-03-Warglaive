@@ -17,10 +17,24 @@ public class QuickSorter<E> implements Sorter<E> {
         // Get first and last node
         Node<E> first = ((QueueImpl<E>) queue).getHeadNode();
         Node<E> last = ((QueueImpl<E>) queue).getTailNode();
-        // Check first and last node valid or not
-if (first!= last && first != null &&)
+        quickSort(first, last);
+        return queue;
+    }
 
-        return null;
+    private void quickSort(Node<E> first, Node<E> last) {
+        // Check first and last node valid or not
+        if (first != last
+                && first != null
+                && last != null
+                && last.getNext() != first) {
+            //
+            Node<E> node = this.partition(first, last);
+            if (node != null) {
+                // Recursively sort elements
+                this.quickSort(node.getNext(), last);
+
+            }
+        }
     }
 
     // Get partition node
