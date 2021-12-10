@@ -1,4 +1,3 @@
-/*
 package asortingservice;
 
 import sortingservice.Queue;
@@ -17,10 +16,4 @@ public class QuickSorter<E> implements Sorter<E> {
     public Queue<E> sort(Queue<E> queue) {
         return null;
     }
-
-    @Override
-    public int compareTo(E b) {
-        return 0;
-    }
 }
-*/
