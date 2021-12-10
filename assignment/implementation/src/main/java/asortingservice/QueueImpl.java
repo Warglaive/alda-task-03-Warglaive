@@ -33,10 +33,13 @@ public class QueueImpl<E> implements Queue<E> {
             // Add the new node at the end of queue and change last
             //TODO: debug if lastNode has element and next is proper
             this.tailNode.setNext(tempNode);
+            tempNode.setPrevious(this.tailNode);
             this.tailNode = tempNode;
             //increment size
         }
+
         this.size++;
+
     }
 
     /**
@@ -107,7 +110,7 @@ public class QueueImpl<E> implements Queue<E> {
         return headNode;
     }
 
-    public void setHeadNode(Node<E> headNode) {
+  /*  public void setHeadNode(Node<E> headNode) {
         this.headNode = headNode;
     }
 
@@ -117,12 +120,5 @@ public class QueueImpl<E> implements Queue<E> {
 
     public void setTailNode(Node<E> tailNode) {
         this.tailNode = tailNode;
-    }
-
-
-    public void swapData(Node<E> first, Node<E> second) {
-        E value = first.item;
-        first.item = second.item;
-        second.item = value;
-    }
+    }*/
 }

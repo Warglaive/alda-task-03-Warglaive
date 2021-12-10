@@ -11,17 +11,25 @@ public class Node<E> {
      * @param item
      */
 
-    Node(E item) {
+   /* Node(E item) {
         this.item = item;
         this.next = null;
         this.previous = null;
 
-    }
+    }*/
 
     Node(E item, Node<E> next) {
         this.item = item;
         this.next = next;
         this.previous = null;
+    }
+
+    public Node<E> getPrevious() {
+        return previous;
+    }
+
+    public void setPrevious(Node<E> previous) {
+        this.previous = previous;
     }
 
     public Node<E> getNext() {
