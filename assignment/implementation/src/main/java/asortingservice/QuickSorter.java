@@ -32,7 +32,7 @@ public class QuickSorter<E> implements Sorter<E> {
             if (node != null) {
                 // Recursively sort elements
                 this.quickSort(node.getNext(), last);
-
+                this.quickSort(first,node.getPrevious());
             }
         }
     }
@@ -43,7 +43,7 @@ public class QuickSorter<E> implements Sorter<E> {
         Node<E> location = first.getPrevious();
         E temp = null;
         while (current != null && current != last) {
-            if (this.comparator.compare(current.item, last.item) > 0) {
+            if (this.comparator.compare(current.item, last.item) < 0) {
                 if (location == null) {
                     location = first;
                 } else {
