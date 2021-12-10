@@ -118,4 +118,11 @@ public class QueueImpl<E> implements Queue<E> {
     public void setTailNode(Node<E> tailNode) {
         this.tailNode = tailNode;
     }
+
+
+    public void swapData(Node<E> first, Node<E> second) {
+        E value = first.item;
+        first.item = second.item;
+        second.item = value;
+    }
 }
