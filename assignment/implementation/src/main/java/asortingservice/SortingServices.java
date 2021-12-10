@@ -13,13 +13,15 @@ import java.util.function.Supplier;
 public class SortingServices implements SortingServiceFactory {
     Map<SortKind, Supplier<Queue>> queueMap =
             Map.of(SortKind.SELECTION, QueueImpl::new,
-                    SortKind.INSERTION, QueueImpl::new);
+                    SortKind.INSERTION, QueueImpl::new
+                    , SortKind.HEAP, QueueImpl::new);
 
     //TODO: Add more queue types kinds when ready
     Map<SortKind, Function<Comparator, Sorter>> sorterMap = Map.of(
             SortKind.SELECTION, SelectionSorter::new
             , SortKind.INSERTION, InsertionSorter::new
-            , SortKind.QUICK, QuickSorter::new);
+            , SortKind.QUICK, QuickSorter::new
+            , SortKind.HEAP, HeapSorter::new);
 
     //TODO: Add more sorter kinds when ready
 
@@ -48,7 +50,8 @@ public class SortingServices implements SortingServiceFactory {
         return new SortKind[]{
                 SortKind.SELECTION,
                 SortKind.INSERTION,
-                SortKind.QUICK
+                SortKind.QUICK,
+                SortKind.HEAP
         };
     }
 }
