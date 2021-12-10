@@ -18,7 +18,8 @@ public class SortingServices implements SortingServiceFactory {
     //TODO: Add more queue types kinds when ready
     Map<SortKind, Function<Comparator, Sorter>> sorterMap = Map.of(
             SortKind.SELECTION, SelectionSorter::new
-            , SortKind.INSERTION, (InsertionSorter::new));
+            , SortKind.INSERTION, InsertionSorter::new
+            , SortKind.QUICK, QuickSorter::new);
 
     //TODO: Add more sorter kinds when ready
 
@@ -46,7 +47,8 @@ public class SortingServices implements SortingServiceFactory {
     public SortKind[] supportedSorters() {
         return new SortKind[]{
                 SortKind.SELECTION,
-                SortKind.INSERTION
+                SortKind.INSERTION,
+                SortKind.QUICK
         };
     }
 }

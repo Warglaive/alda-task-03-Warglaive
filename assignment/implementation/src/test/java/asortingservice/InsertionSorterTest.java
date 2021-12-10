@@ -34,14 +34,12 @@ public class InsertionSorterTest {
 
     @Test
     void integerSortTest() {
-        //TODO: Fix Node's references
         Queue<Integer> unsortedQueue = this.factory.createPreferredQueue(SortKind.SELECTION);
         //hardcoded elementsCount value for test purposes
         unsortedQueue = fillUnsorted(5);
         var sortedQueue = new QueueImpl<Integer>();
         sortedQueue = (QueueImpl<Integer>) fillSorted(5);
         unsortedQueue = this.integerSorter.sort(unsortedQueue);
-        //TODO:
         for (int i = 0; i < unsortedQueue.size(); i++) {
             assertThat(unsortedQueue.get()).isEqualTo(sortedQueue.get());
         }
