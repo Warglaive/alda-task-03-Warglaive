@@ -17,8 +17,4 @@ public class HeapSorter<E> implements Sorter<E> {
 
         return null;
     }
-
-    public void traverseTree(BinaryTreeNode<E> node) {
-
-    }
 }
