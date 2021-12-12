@@ -13,6 +13,7 @@ import java.util.function.Supplier;
 public class SortingServices implements SortingServiceFactory {
     Map<SortKind, Supplier<Queue>> queueMap =
             Map.of(SortKind.SELECTION, QueueImpl::new,
+                    SortKind.QUICK, QueueImpl::new,
                     SortKind.INSERTION, QueueImpl::new
                     , SortKind.HEAP, QueueImpl::new);
 

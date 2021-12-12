@@ -30,7 +30,7 @@ class QuickSorterTest {
     @Test
     void sort() {
         //TODO: Fix Node's references
-        Queue<Integer> unsortedQueue = this.factory.createPreferredQueue(SortKind.SELECTION);
+        Queue<Integer> unsortedQueue = this.factory.createPreferredQueue(SortKind.QUICK);
         //hardcoded elementsCount value for test purposes
         unsortedQueue = fillUnsorted(5);
         var sortedQueue = new QueueImpl<Integer>();
