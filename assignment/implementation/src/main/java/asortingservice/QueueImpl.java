@@ -3,38 +3,33 @@ package asortingservice;
 import sortingservice.Queue;
 
 import java.util.Iterator;
-import java.util.NoSuchElementException;
 
 public class QueueImpl<E> implements Queue<E> {
+    private Node head;
+    private Node tail;
+    int size;
 
-    private Node<E> headNode;
-    private Node<E> tailNode;
-    private long size;
-
-    QueueImpl() {
-        this.headNode = null;
-        this.tailNode = null;
-        this.size = 0;
+    public Node getHead(){
+        return this.head;
     }
 
-    /**
-     * enqueue
-     *
-     * @param item element to add
-     */
+    public Node getTail(){
+        return this.tail;
+    }
+
     @Override
     public void put(E item) {
         //create new node containing the item
-        Node<E> tempNode = new Node<>(item, null);
+        Node<E> tempNode = new Node<>(item);
         // If queue is empty, then new node is start and last both
         if (isEmpty()) {
-            this.headNode = this.tailNode = tempNode;
+            this.head = this.tail = tempNode;
         } else {
             // Add the new node at the end of queue and change last
             //TODO: debug if lastNode has element and next is proper
-            this.tailNode.setLeft(tempNode);
-            tempNode.setRight(this.tailNode);
-            this.tailNode = tempNode;
+            this.tail.setNext(tempNode);
+            tempNode.setPrevious(this.tail);
+            this.tail = tempNode;
             //increment size
         }
 
@@ -42,33 +37,32 @@ public class QueueImpl<E> implements Queue<E> {
 
     }
 
-    /**
-     * dequeue
-     *
-     * @return first node's element
-     */
     @Override
     public E get() {
-        // If queue is empty, return NULL.
         if (isEmpty()) {
             return null;
         }
-        // Store previous start and move start one node ahead
-        Node<E> tempNode = this.headNode;
-        this.headNode = this.headNode.getLeft();
-        // If first becomes NULL, then change last also as NULL
-        if (this.headNode == null) {
-            this.tailNode = null;
+
+        E item = (E) this.head.item;
+
+        if (this.head.next == null) {
+            this.head = null;
+            this.tail = null;
         }
-        //TODO: may be wrong
-        //return
+        else {
+            this.head = this.head.next;
+        }
+
         this.size--;
-        return tempNode.item;
+        return item;
     }
 
     @Override
     public boolean isEmpty() {
-        return this.size == 0;
+        if (this.head == null) {
+            return true;
+        }
+        return false;
     }
 
     @Override
@@ -76,49 +70,70 @@ public class QueueImpl<E> implements Queue<E> {
         return this.size;
     }
 
-    public E peek() {
-        // If queue is empty, return NULL.
-        if (isEmpty()) {
-            return null;
+//    public void exchangePlaces(Node a, Node b) {
+//        Node newNode = a;
+//        E aux = (E) a.item;
+//        a.item = b.item;
+//        b.item = aux;
+//        a.next = b;
+//        b.previous = a;
+//        if (a.previous != null) {
+//            a.previous.next = a;
+//        }
+//        if (b.next != null) {
+//            b.next.previous = b;
+//        }
+//    }
+
+    public void exchangeItem(Node a, Node b) {
+        E aux = (E) a.item;
+        a.item = b.item;
+        b.item = aux;
+    }
+
+//    public void addInTheFront(E item) {
+//        Node itemNode = new Node(item);
+//        Node currHead = this.head;
+//        this.head = itemNode;
+//        itemNode.next = currHead;
+//        this.size++;
+//    }
+
+    class IteratorClass implements Iterator<E>{
+        Node newNode;
+        @Override
+        public boolean hasNext() {
+            if (getHead() != null && newNode == null) {
+                return true;
+            } else if(newNode != null && newNode.next != null){
+                return true;
+            }
+            return false;
         }
-        return this.headNode.item;
+
+        @Override
+        public E next() {
+            if (getHead() != null && newNode == null) {
+                newNode = getHead();
+                E a;
+                a = (E) newNode.item;
+                return a;
+            }
+            else if(newNode != null){
+                if(newNode.next == null) {
+                    throw new NullPointerException("There is no next in the queue!");
+                }
+                E a;
+                newNode = newNode.next;
+                a = (E) newNode.item;
+                return a;
+            }
+            throw new NullPointerException("There is no next in the queue!");
+        }
     }
 
     @Override
     public Iterator<E> iterator() {
-        //TODO: Implement
-
-        return new Iterator<>() {
-            Node<E> current = headNode;
-
-            @Override
-            public boolean hasNext() {
-                return current != null;
-            }
-
-            @Override
-            public E next() {
-                if (!hasNext()) throw new NoSuchElementException();
-                var tempItem = current.item;
-                current = current.getLeft();
-                return tempItem;
-            }
-        };
+        return new IteratorClass();
     }
-
-    public Node<E> getHeadNode() {
-        return headNode;
-    }
-    public Node<E> getTailNode() {
-        return tailNode;
-    }
-  /*  public void setHeadNode(Node<E> headNode) {
-        this.headNode = headNode;
-    }
-
-
-
-    public void setTailNode(Node<E> tailNode) {
-        this.tailNode = tailNode;
-    }*/
 }

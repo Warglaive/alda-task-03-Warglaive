@@ -12,7 +12,7 @@ import java.util.Comparator;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
-class SelectionSorterTest {
+public class SelectionSorterTest {
     private SortingServices factory;
     private Comparator<Integer> comparator;
     private Sorter<Integer> sorter;
@@ -20,7 +20,7 @@ class SelectionSorterTest {
     @BeforeEach
     void setUp() {
         this.factory = new SortingServices();
-        this.comparator = new CountingComparator<>((a, b) -> a.compareTo(b));
+        this.comparator = new CountingComparator<>(Integer::compareTo);
         this.sorter = this.factory.createSorter(SortKind.SELECTION, this.comparator);
     }
 
@@ -31,19 +31,14 @@ class SelectionSorterTest {
 
     @Test
     void integerSortTest() {
-        //TODO: Fix Node's references
         Queue<Integer> unsortedQueue = this.factory.createPreferredQueue(SortKind.SELECTION);
-        //hardcoded elementsCount value for test purposes
         unsortedQueue = fillUnsorted(5);
         var sortedQueue = new QueueImpl<Integer>();
         sortedQueue = (QueueImpl<Integer>) fillSorted(5);
-        //sort
         unsortedQueue = this.sorter.sort(unsortedQueue);
-        //TODO:
         for (int i = 0; i < unsortedQueue.size(); i++) {
             assertThat(unsortedQueue.get()).isEqualTo(sortedQueue.get());
         }
-        //assertThat(sortedQueue).usingRecursiveComparison().isEqualTo(unsortedQueue);
     }
 
     Queue<Integer> fillSorted(int elementsCount) {
@@ -55,20 +50,10 @@ class SelectionSorterTest {
     }
 
     Queue<Integer> fillUnsorted(int elementsCount) {
-        //make unsorted queue
         Queue<Integer> unsortedQueue = new QueueImpl<>();
         for (int i = elementsCount; i > 0; i--) {
             unsortedQueue.put(i);
         }
         return unsortedQueue;
     }
-
-   /* @Test
-    void compareToTest() {
-        SelectionSorter<Integer> sorter = new SelectionSorter<>(this.comparator);
-        ThrowableAssert.ThrowingCallable code = () -> {
-            sorter.compareTo(1);
-        };
-        assertThatThrownBy(code).isExactlyInstanceOf(ClassCastException.class);
-    }*/
 }
