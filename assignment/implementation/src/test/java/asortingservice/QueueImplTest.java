@@ -1,117 +1,113 @@
 package asortingservice;
 
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import sortingservice.SortKind;
 import sortingservice.SortingServiceFactory;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
-
-import java.util.Iterator;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class QueueImplTest<E> {
-    QueueImpl<E> queue;
+public class QueueImplTest {
+    QueueImpl<Integer> selectionQueue;
     SortingServiceFactory factory;
-    Node<E> node;
-    Node<E> node2;
-    String item;
 
     @BeforeEach
     void setUp() {
         this.factory = new SortingServices();
-        this.queue = (QueueImpl<E>) this.factory.createPreferredQueue(SortKind.SELECTION);
-        this.item = "suicide";
-        this.node = new Node<E>((E) this.item);
-        this.node2 = new Node<E>(this.node);
+        this.selectionQueue = (QueueImpl) this.factory.createPreferredQueue(SortKind.SELECTION);
     }
 
     @Test
     void constructorTest() {
-        assertThat(this.queue).isExactlyInstanceOf(QueueImpl.class);
+        assertThat(this.selectionQueue).isExactlyInstanceOf(QueueImpl.class);
     }
 
     @Test
-    void getHeadNullTest() {
-        assertThat(this.queue.getHead()).isNull();
+    void getHeadNodeNullTest() {
+        assertThat(this.selectionQueue.getHeadNode()).isNull();
     }
 
     @Test
-    void getHeadNotNullTest() {
-        this.queue.put((E) new Object());
-        assertThat(this.queue.getHead()).isNotNull();
+    void getHeadNodeNotNullTest() {
+        this.selectionQueue.put(1);
+        assertThat(this.selectionQueue.getHeadNode()).isNotNull();
     }
 
     @Test
     void put() {
-        E item = (E) Integer.valueOf("1");
-        this.queue.put(item);
-        assertThat(this.queue.getHead()).isNotNull();
+        int item = 1;
+        this.selectionQueue.put(item);
+        assertThat(this.selectionQueue.getHeadNode()).isNotNull();
 
     }
 
     @Test
     void get() {
-        E putItem = (E) Integer.valueOf("1");
-        E expectedItem = (E) Integer.valueOf("1");
-        this.queue.put(putItem);
-        assertThat(this.queue.get()).usingRecursiveComparison().isEqualTo(expectedItem);
+        int putItem = 1;
+        int expectedItem = 1;
+        this.selectionQueue.put(putItem);
+        assertThat(this.selectionQueue.get()).usingRecursiveComparison().isEqualTo(expectedItem);
     }
 
     @Test
     void getNull() {
-        assertThat(this.queue.get()).usingRecursiveComparison().isNull();
+        assertThat(this.selectionQueue.get()).usingRecursiveComparison().isNull();
     }
 
     @Test
     void isEmpty() {
-        assertThat(this.queue.isEmpty()).isTrue();
-        this.queue.put((E) Integer.valueOf("1"));
-        assertThat(this.queue.isEmpty()).isFalse();
+        assertThat(this.selectionQueue.isEmpty()).isTrue();
+        this.selectionQueue.put(1);
+        assertThat(this.selectionQueue.isEmpty()).isFalse();
     }
 
     @Test
     void size() {
-        this.queue.put((E) Integer.valueOf("1"));
+        this.selectionQueue.put(1);
         long expectedSize = 1;
-        assertThat(this.queue.size()).isEqualTo(expectedSize);
+        assertThat(this.selectionQueue.size()).isEqualTo(expectedSize);
     }
-
-    Integer i = 1;
-    Integer ii = 2;
 
     @Test
-    void iterator() {
-        QueueImpl<Integer> queueImpl = new QueueImpl<>();
-        Iterator<Integer> iterator = queueImpl.iterator();
-        try{
-            iterator.next();
-
-        }catch (NullPointerException e){
-            assertEquals("There is no next in the queue!",e.getMessage());
-        }
-        queueImpl.put(7);
-        queueImpl.put(5);
-        queueImpl.put(3);
-        queueImpl.put(6);
-        queueImpl.put(4);
-
-
-        while (iterator.hasNext()){
-            iterator.next();
-        }
-        assertEquals(false,iterator.hasNext());
-        try{
-            iterator.next();
-
-        }catch (NullPointerException e){
-            assertEquals("There is no next in the queue!",e.getMessage());
-        }
-        Node a = queueImpl.getTail();
-        assertNotNull(a.getItem());
+    void peek() {
+        this.selectionQueue.put(1);
+        assertThat(this.selectionQueue.peek()).isEqualTo(1);
     }
 
+    @Test
+    void peekNull() {
+        assertThat(this.selectionQueue.peek()).isNull();
+    }
 
+    @Test
+    void iteratorHasNextTest() {
+        this.selectionQueue.put(1);
+        this.selectionQueue.put(2);
+        assertThat(this.selectionQueue.iterator().hasNext()).isTrue();
+        this.selectionQueue.get();
+        this.selectionQueue.get();
+        assertThat(this.selectionQueue.iterator().hasNext()).isFalse();
+    }
+
+    @Test
+    void iteratorNextTest() {
+        this.selectionQueue.put(1);
+        this.selectionQueue.put(2);
+        this.selectionQueue.put(3);
+        var tempQueue = new QueueImpl<Integer>();
+        for (Integer a : this.selectionQueue) {
+            tempQueue.put(a);
+        }
+        assertThat(this.selectionQueue).usingRecursiveComparison().isEqualTo(tempQueue);
+    }
+
+   /* @Test
+    void compareQueuesInsertionTest() {
+        var first = this.factory.createPreferredQueue(SortKind.INSERTION);
+        for (int i = 0; i < 5999; i++) {
+            first.put(i);
+            System.out.println(first.iterator().next());
+
+        }
+    }*/
 }

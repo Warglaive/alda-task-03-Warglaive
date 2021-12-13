@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>nl.fontys.sebivenlo</groupId>
         <artifactId>sortingserviceparent</artifactId>
         <version>1.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+        <relativePath>..</relativePath>
     </parent>
     <groupId>nl.fontys.sebivenlo.sortingservice</groupId>
     <artifactId>asortingservice</artifactId>
@@ -21,7 +21,7 @@
         <sebi.sorters>SELECTION INSERTION</sebi.sorters>
         <surefire.timeout>20</surefire.timeout>
         <surefire.opens>
-            --add-reads asortingservice=java.logging 
+            --add-reads asortingservice=java.logging
             --add-opens asortingservice/asortingservice=ALL-UNNAMED
         </surefire.opens>
     </properties>

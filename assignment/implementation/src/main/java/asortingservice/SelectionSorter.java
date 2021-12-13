@@ -6,32 +6,46 @@ import sortingservice.Sorter;
 import java.util.Comparator;
 
 public class SelectionSorter<E> implements Sorter<E> {
-    QueueImpl<E> queue = new QueueImpl<>();
-    private Comparator comp;
+    private Comparator<E> comparator;
 
-    public SelectionSorter(Comparator<E> comp){
-        this.comp = comp;
+    SelectionSorter(Comparator<E> comparator) {
+        this.comparator = comparator;
     }
 
     @Override
-    public Queue<E> sort(Queue<E> q) {
-        QueueImpl<E> impl = (QueueImpl<E>) q;
-        Node<E> headNode = impl.getHead();
+    public Queue<E> sort(Queue<E> queue) {
+        QueueImpl<E> impl = (QueueImpl<E>) queue;
+        //1. Get head node and save to temp var
+
+        //Get head node and next node
+        Node<E> headNode = impl.getHeadNode();
+        //traverse the list
         while (headNode != null) {
             Node<E> minItemNode = headNode;
-            Node<E> nextNode = headNode.getNext();
+            Node<E> nextNode = headNode.getLeft();
+            //Traverse the unsorted sublist
             while (nextNode != null) {
-                if (this.comp.compare(minItemNode.item, nextNode.item) > 0) {
+                //Find which node has the smallest element
+                if (this.comparator.compare(minItemNode.item, nextNode.item) > 0) {
                     minItemNode = nextNode;
                 }
-                nextNode = nextNode.getNext();
+                //go to next node
+                nextNode = nextNode.getLeft();
             }
+            //swap elements
             E tempItem = headNode.item;
             headNode.item = minItemNode.item;
             minItemNode.item = tempItem;
-            headNode = headNode.getNext();
+            headNode = headNode.getLeft();
         }
 
-        return q;
+        return queue;
     }
+
+   /* @Override
+    public int compareTo(E b) {
+        //TODO: MAy be buggy
+        return this.comparator.compare((E) this, b);
+    }*/
+
 }
