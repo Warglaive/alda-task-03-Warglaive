@@ -1,11 +1,6 @@
 package asortingservice;
 
-/**
- * I know I could use the Node class but to make my life easier, I'm going to use this for the last sorter.
- * S.S
- *
- * @param <E>
- */
+
 public class BinaryTree<E extends Comparable<E>> {
     E key;
     Node<E> rootNode;
