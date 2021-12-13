@@ -10,19 +10,12 @@ public class BinaryTree<E extends Comparable<E>> {
     E key;
     Node<E> rootNode;
 
-    BinaryTree(E key) {
-        this.key = key;
-        this.rootNode = null;
-    }
-
-    BinaryTree(E key, Node<E> next) {
-        this.key = key;
-        //TODO: Assign next
+    BinaryTree() {
     }
 
     public Node<E> addRecursive(Node<E> current, E key) {
         if (current == null) {
-            return new Node<E>(key);
+            return new Node<>(key);
         }
 
         if (key.compareTo(current.item) < 0) {
