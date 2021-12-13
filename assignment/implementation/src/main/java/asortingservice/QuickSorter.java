@@ -26,13 +26,13 @@ public class QuickSorter<E> implements Sorter<E> {
         if (first != last
                 && first != null
                 && last != null
-                && last.getNext() != first) {
+                && last.getLeft() != first) {
             //
             Node<E> node = this.partition(first, last);
             if (node != null) {
                 // Recursively sort elements
-                this.quickSort(node.getNext(), last);
-                this.quickSort(first,node.getPrevious());
+                this.quickSort(node.getLeft(), last);
+                this.quickSort(first,node.getRight());
             }
         }
     }
@@ -40,14 +40,14 @@ public class QuickSorter<E> implements Sorter<E> {
     // Get partition node
     public Node<E> partition(Node<E> first, Node<E> last) {
         Node<E> current = first;
-        Node<E> location = first.getPrevious();
+        Node<E> location = first.getRight();
         E temp = null;
         while (current != null && current != last) {
             if (this.comparator.compare(current.item, last.item) < 0) {
                 if (location == null) {
                     location = first;
                 } else {
-                    location = location.getNext();
+                    location = location.getLeft();
                 }
                 //swap node values
                 temp = current.item;
@@ -55,12 +55,12 @@ public class QuickSorter<E> implements Sorter<E> {
                 location.item = temp;
             }
             //visit to next node
-            current = current.getNext();
+            current = current.getLeft();
         }
         if (location == null) {
             location = first;
         } else {
-            location = location.getNext();
+            location = location.getLeft();
         }
         //swap node values
         temp = last.item;

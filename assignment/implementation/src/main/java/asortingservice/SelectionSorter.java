@@ -22,7 +22,7 @@ public class SelectionSorter<E> implements Sorter<E> {
         //traverse the list
         while (headNode != null) {
             Node<E> minItemNode = headNode;
-            Node<E> nextNode = headNode.getNext();
+            Node<E> nextNode = headNode.getLeft();
             //Traverse the unsorted sublist
             while (nextNode != null) {
                 //Find which node has the smallest element
@@ -30,13 +30,13 @@ public class SelectionSorter<E> implements Sorter<E> {
                     minItemNode = nextNode;
                 }
                 //go to next node
-                nextNode = nextNode.getNext();
+                nextNode = nextNode.getLeft();
             }
             //swap elements
             E tempItem = headNode.item;
             headNode.item = minItemNode.item;
             minItemNode.item = tempItem;
-            headNode = headNode.getNext();
+            headNode = headNode.getLeft();
         }
 
         return queue;

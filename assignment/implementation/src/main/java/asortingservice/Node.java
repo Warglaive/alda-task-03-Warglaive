@@ -2,8 +2,8 @@ package asortingservice;
 
 public class Node<E> {
     E item;
-    private Node<E> next;
-    private Node<E> previous;
+    private Node<E> left;
+    private Node<E> right;
 
     /**
      * create new LL node
@@ -11,32 +11,33 @@ public class Node<E> {
      * @param item
      */
 
-   /* Node(E item) {
+    Node(E item) {
+        //used only in BinaryTree for now.
         this.item = item;
-        this.next = null;
-        this.previous = null;
+        this.left = null;
+        this.right = null;
 
-    }*/
+    }
 
     Node(E item, Node<E> next) {
         this.item = item;
-        this.next = next;
-        this.previous = null;
+        this.left = next;
+        this.right = null;
     }
 
-    public Node<E> getPrevious() {
-        return previous;
+    public Node<E> getRight() {
+        return right;
     }
 
-    public void setPrevious(Node<E> previous) {
-        this.previous = previous;
+    public void setRight(Node<E> right) {
+        this.right = right;
     }
 
-    public Node<E> getNext() {
-        return next;
+    public Node<E> getLeft() {
+        return left;
     }
 
-    public void setNext(Node<E> next) {
-        this.next = next;
+    public void setLeft(Node<E> left) {
+        this.left = left;
     }
 }
