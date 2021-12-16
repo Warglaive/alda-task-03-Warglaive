@@ -5,6 +5,7 @@ import org.junit.jupiter.api.Test;
 import java.util.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
 public class HeapSorterTest {
 
     @Test
@@ -13,7 +14,7 @@ public class HeapSorterTest {
             if (a > b) {
                 return 1;
             }
-            if (Objects.equals(a,b)) {
+            if (Objects.equals(a, b)) {
                 return 0;
             }
             return -1;
@@ -51,8 +52,9 @@ public class HeapSorterTest {
             queueImp.put(a);
         }
 
-
+        //sort the queue
         QueueImpl<Integer> sorted = (QueueImpl<Integer>) heapSorter.sort(queueImp);
+
         list.sort(comparator);
 
         list.forEach((integer) -> {

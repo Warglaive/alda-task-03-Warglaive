@@ -42,8 +42,8 @@ class SortingServicesTest<T> {
     @Test
     void createSelectionSorter() {
         this.comparator = (f1, f2) -> {
-            Comparable compA = null;
-            Comparable compB = null;
+            Comparable compA;
+            Comparable compB;
 
             // getting fields from object f1,f2
             compA = (Comparable) f1;
@@ -64,8 +64,8 @@ class SortingServicesTest<T> {
     @Test
     void createInsertionSorter() {
         this.comparator = (f1, f2) -> {
-            Comparable compA = null;
-            Comparable compB = null;
+            Comparable compA;
+            Comparable compB;
 
             // getting fields from object f1,f2
             compA = (Comparable) f1;
@@ -81,6 +81,51 @@ class SortingServicesTest<T> {
         };
         var sorter = this.factory.createSorter(SortKind.INSERTION, this.comparator);
         assertThat(sorter).isExactlyInstanceOf(InsertionSorter.class);
+    }
+
+    @Test
+    void createQuickSorter() {
+        this.comparator = (f1, f2) -> {
+            Comparable compA;
+            Comparable compB;
+
+            // getting fields from object f1,f2
+            compA = (Comparable) f1;
+            compB = (Comparable) f2;
+
+            // handling null comparators
+            if (compA == null)
+                return -1;
+            else if (compB == null)
+                return 1;
+
+            return compA.compareTo(compB);
+        };
+        var sorter = this.factory.createSorter(SortKind.QUICK, this.comparator);
+        assertThat(sorter).isExactlyInstanceOf(QuickSorter.class);
+    }
+
+
+    @Test
+    void createHeapSorter() {
+        this.comparator = (f1, f2) -> {
+            Comparable compA;
+            Comparable compB;
+
+            // getting fields from object f1,f2
+            compA = (Comparable) f1;
+            compB = (Comparable) f2;
+
+            // handling null comparators
+            if (compA == null)
+                return -1;
+            else if (compB == null)
+                return 1;
+
+            return compA.compareTo(compB);
+        };
+        var sorter = this.factory.createSorter(SortKind.HEAP, this.comparator);
+        assertThat(sorter).isExactlyInstanceOf(HeapSorter.class);
     }
 
     @Test
