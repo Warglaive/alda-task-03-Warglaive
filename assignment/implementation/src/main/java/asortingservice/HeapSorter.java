@@ -11,7 +11,7 @@ public class HeapSorter<E> implements Sorter<E> {
     Node<E> root;
     int size;
 
-    public Queue sortingTree(Node<E> r, Queue<E> queue) {
+    public Queue<E> sortingTree(Node<E> r, Queue<E> queue) {
 
         int count = size;
         while (count > 1) {
@@ -60,7 +60,7 @@ public class HeapSorter<E> implements Sorter<E> {
 
     }
 
-    public HeapSorter(Comparator comparator) {
+    public HeapSorter(Comparator<E> comparator) {
         this.comparator = comparator;
         parentStack = new Stack<>();
         size = 1;
@@ -116,10 +116,9 @@ public class HeapSorter<E> implements Sorter<E> {
 
         }
         return root;
-
     }
 
-    public Node<E> Tree(Queue<E> queue) {
+    public void Tree(Queue<E> queue) {
 
         E item = queue.get();
         root = new Node<E>(item, size);
@@ -140,11 +139,7 @@ public class HeapSorter<E> implements Sorter<E> {
                 Node<E> rightCurrent = new Node<>(currItemR, ++size);
                 availableParent.setRight(rightCurrent);
                 availableParents.put(rightCurrent);
-
             }
-
         }
-        return root;
-
     }
 }
