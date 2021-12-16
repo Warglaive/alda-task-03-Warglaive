@@ -46,19 +46,6 @@ public class InsertionSorterTest {
     }
 
     @Test
-    void stringSortTest() {
-        Queue<String> unsortedQueue = new QueueImpl<>();
-        unsortedQueue.put("c");
-        unsortedQueue.put("b");
-        unsortedQueue.put("a");
-        Queue<String> result = new QueueImpl<>();
-        result = stringSorter.sort(unsortedQueue);
-        for (int i = 0; i <= result.size(); i++) {
-            System.out.println(result.get());
-        }
-    }
-
-    @Test
     void nextNotNullSortTest() {
         Queue<Integer> unsortedQueue = fillSorted(5);
         QueueImpl<Integer> sortedQueue = (QueueImpl<Integer>) this.integerSorter.sort(unsortedQueue);
