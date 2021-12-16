@@ -4,21 +4,6 @@ public class Stack <E>{
     Node<E> head = null;
     int size;
 
-    public static class Node<T> {
-
-        T item;
-        Node<T> previous;
-
-        public Node(T item, Node<T> previous) {
-            this.item = item;
-            this.previous = previous;
-        }
-
-        public Node<T> getPrevious() {
-            return previous;
-        }
-    }
-
     public Stack() {
     }
     public void push(E item) {
@@ -32,7 +17,7 @@ public class Stack <E>{
         }
         size--;
 
-        this.head = this.head.getPrevious();
+        this.head = this.head.getLeft();
     }
 
     public E peek() {
@@ -42,7 +27,4 @@ public class Stack <E>{
         return this.head.item;
     }
 
-    public int size(){
-        return size;
-    }
 }
