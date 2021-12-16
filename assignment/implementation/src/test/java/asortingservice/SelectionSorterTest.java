@@ -1,6 +1,5 @@
 package asortingservice;
 
-import org.assertj.core.api.ThrowableAssert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import sortingservice.Queue;
@@ -10,7 +9,6 @@ import sortingservice.Sorter;
 import java.util.Comparator;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.assertj.core.api.AssertionsForClassTypes.assertThatThrownBy;
 
 class SelectionSorterTest {
     private SortingServices factory;
@@ -20,7 +18,7 @@ class SelectionSorterTest {
     @BeforeEach
     void setUp() {
         this.factory = new SortingServices();
-        this.comparator = new CountingComparator<>((a, b) -> a.compareTo(b));
+        this.comparator = new CountingComparator<>(Integer::compareTo);
         this.sorter = this.factory.createSorter(SortKind.SELECTION, this.comparator);
     }
 
@@ -43,7 +41,6 @@ class SelectionSorterTest {
         for (int i = 0; i < unsortedQueue.size(); i++) {
             assertThat(unsortedQueue.get()).isEqualTo(sortedQueue.get());
         }
-        //assertThat(sortedQueue).usingRecursiveComparison().isEqualTo(unsortedQueue);
     }
 
     Queue<Integer> fillSorted(int elementsCount) {
@@ -62,13 +59,4 @@ class SelectionSorterTest {
         }
         return unsortedQueue;
     }
-
-   /* @Test
-    void compareToTest() {
-        SelectionSorter<Integer> sorter = new SelectionSorter<>(this.comparator);
-        ThrowableAssert.ThrowingCallable code = () -> {
-            sorter.compareTo(1);
-        };
-        assertThatThrownBy(code).isExactlyInstanceOf(ClassCastException.class);
-    }*/
 }

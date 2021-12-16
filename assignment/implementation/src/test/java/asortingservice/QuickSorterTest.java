@@ -1,8 +1,5 @@
 package asortingservice;
 
-import asortingservice.CountingComparator;
-import asortingservice.QueueImpl;
-import asortingservice.SortingServices;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import sortingservice.Queue;
@@ -12,7 +9,6 @@ import sortingservice.Sorter;
 import java.util.Comparator;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class QuickSorterTest {
     private SortingServices factory;
@@ -29,14 +25,12 @@ class QuickSorterTest {
 
     @Test
     void sort() {
-        //TODO: Fix Node's references
         Queue<Integer> unsortedQueue = this.factory.createPreferredQueue(SortKind.QUICK);
         //hardcoded elementsCount value for test purposes
         unsortedQueue = fillUnsorted(5);
         var sortedQueue = new QueueImpl<Integer>();
         sortedQueue = (QueueImpl<Integer>) fillSorted(5);
         unsortedQueue = this.integerSorter.sort(unsortedQueue);
-        //TODO:
         for (int i = 0; i < unsortedQueue.size(); i++) {
             assertThat(unsortedQueue.get()).isEqualTo(sortedQueue.get());
         }
@@ -63,8 +57,5 @@ class QuickSorterTest {
             unsortedQueue.put(i);
         }
         return unsortedQueue;
-    }
-    @Test
-    void partition() {
     }
 }
