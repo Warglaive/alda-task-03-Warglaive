@@ -5,7 +5,7 @@ import sortingservice.Sorter;
 
 import java.util.Comparator;
 
-public class HeapSorter <E> implements Sorter<E> {
+public class HeapSorter<E> implements Sorter<E> {
     private final Comparator<E> comparator;
     Stack<Node<E>> parentStack;
     Node<E> root;
@@ -18,10 +18,10 @@ public class HeapSorter <E> implements Sorter<E> {
             //put root
             queue.put(r.item);
             //exchange root to last item and delete it
-            ExchangeAndDelete(count,r,r,r);
+            ExchangeAndDelete(count, r, r, r);
 
             //sink root
-            sink((Node<E>) r);
+            sink(r);
             count--;
         }
         queue.put(r.item);
@@ -30,10 +30,9 @@ public class HeapSorter <E> implements Sorter<E> {
     }
 
 
-    public Node<E> ExchangeAndDelete(int i, Node<E> lastNode, Node<E> firstNode,Node<E> parentNode) {
-
+    public Node<E> ExchangeAndDelete(int i, Node<E> lastNode, Node<E> firstNode, Node<E> parentNode) {
         if (lastNode != null) {
-            if(lastNode.size == i/2)
+            if (lastNode.size == i / 2)
                 //find parent node
                 parentNode = lastNode;
             if (lastNode.size == i) {
@@ -41,17 +40,17 @@ public class HeapSorter <E> implements Sorter<E> {
                 firstNode.item = lastNode.item;
                 lastNode.item = aux;
                 //Exchange and delete with firstIndex
-                if (parentNode.left != null && lastNode.item == parentNode.left.item) {
-                    parentNode.left = null;
+                if (parentNode.getLeft() != null && lastNode.item == parentNode.getLeft().item) {
+                    parentNode.setLeft(null);
 
                 } else {
-                    parentNode.right = null;
+                    parentNode.setRight(null);
                 }
                 return firstNode;
             } else {
-                Node<E> currNode = ExchangeAndDelete(i, lastNode.left, firstNode, parentNode);
+                Node<E> currNode = ExchangeAndDelete(i, lastNode.getLeft(), firstNode, parentNode);
                 if (currNode == null) {
-                    currNode = ExchangeAndDelete(i, lastNode.right,firstNode,parentNode);
+                    currNode = ExchangeAndDelete(i, lastNode.getRight(), firstNode, parentNode);
                 }
                 return currNode;
             }
@@ -59,20 +58,6 @@ public class HeapSorter <E> implements Sorter<E> {
             return null;
         }
 
-    }
-
-
-    private static class Node<E> {
-
-        private E item;
-        private Node<E> left;
-        private Node<E> right;
-        private int size;
-
-        Node(E item, int n) {
-            this.item = item;
-            this.size = n;
-        }
     }
 
     public HeapSorter(Comparator comparator) {
@@ -93,33 +78,31 @@ public class HeapSorter <E> implements Sorter<E> {
     }
 
     public void sink(Node<E> parent) {
-
-
         //if left is smaller exchange
-        if (parent.left != null && less(parent.left, parent)) {
-            exchange(parent, parent.left);
+        if (parent.getLeft() != null && less(parent.getLeft(), parent)) {
+            exchange(parent, parent.getLeft());
         }
         //if right is smaller exchange
-        if (parent.right != null && less(parent.right, parent)) {
-            exchange(parent, parent.right);
+        if (parent.getRight() != null && less(parent.getRight(), parent)) {
+            exchange(parent, parent.getRight());
 
         }
-        if (parent.left != null) {
-            sink(parent.left);
+        if (parent.getLeft() != null) {
+            sink(parent.getLeft());
         }
-        if (parent.right != null) {
-            sink(parent.right);
+        if (parent.getRight() != null) {
+            sink(parent.getRight());
         }
     }
 
 
     @Override
-    public Queue sort(Queue queue) {
+    public Queue<E> sort(Queue<E> queue) {
 
-        if(queue.isEmpty() || queue.size() ==1) return queue;
+        if (queue.isEmpty() || queue.size() == 1) return queue;
         Tree(queue);
-        Node<E> minheapify = (Node<E>) minHeapify();
-        return sortingTree(minheapify, queue);
+        Node<E> minHeapify = minHeapify();
+        return sortingTree(minHeapify, queue);
 
     }
 
@@ -139,7 +122,7 @@ public class HeapSorter <E> implements Sorter<E> {
     public Node<E> Tree(Queue<E> queue) {
 
         E item = queue.get();
-        root = new Node<>(item, size);
+        root = new Node<E>(item, size);
         QueueImpl<Node<E>> availableParents = new QueueImpl<>();
         availableParents.put(root);
 
@@ -148,14 +131,14 @@ public class HeapSorter <E> implements Sorter<E> {
             Node<E> availableParent = availableParents.get();
             E currItem = queue.get();
             Node<E> leftCurrent = new Node<>(currItem, ++size);
-            availableParent.left = leftCurrent;
+            availableParent.setLeft(leftCurrent);
             parentStack.push(availableParent);
             availableParents.put(leftCurrent);
 
             if (!queue.isEmpty()) {
                 E currItemR = queue.get();
                 Node<E> rightCurrent = new Node<>(currItemR, ++size);
-                availableParent.right = rightCurrent;
+                availableParent.setRight(rightCurrent);
                 availableParents.put(rightCurrent);
 
             }

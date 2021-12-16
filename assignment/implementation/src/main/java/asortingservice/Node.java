@@ -4,6 +4,7 @@ public class Node<E> {
     E item;
     private Node<E> left;
     private Node<E> right;
+    public long size;
 
     /**
      * create new LL node
@@ -11,18 +12,15 @@ public class Node<E> {
      * @param item
      */
 
-    Node(E item) {
-        //used only in BinaryTree for now.
-        this.item = item;
-        this.left = null;
-        this.right = null;
-
-    }
-
     Node(E item, Node<E> next) {
         this.item = item;
         this.left = next;
         this.right = null;
+    }
+
+    public Node(E item, int size) {
+        this.item = item;
+        this.size = size;
     }
 
     public Node<E> getRight() {
