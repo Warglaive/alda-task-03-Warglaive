@@ -1,11 +1,12 @@
 package asortingservice;
 
-public class Stack <E>{
+public class Stack<E> {
     Node<E> head = null;
     int size;
 
     public Stack() {
     }
+
     public void push(E item) {
         this.head = new Node<>(item, this.head);
         size++;
