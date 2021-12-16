@@ -1,3 +1,4 @@
+/*
 package asortingservice;
 
 
@@ -29,3 +30,4 @@ public class BinaryTree<E extends Comparable<E>> {
         this.addRecursive(this.rootNode, key);
     }
 }
+*/
