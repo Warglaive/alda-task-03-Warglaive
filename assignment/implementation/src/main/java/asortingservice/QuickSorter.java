@@ -26,13 +26,13 @@ public class QuickSorter<E> implements Sorter<E> {
         if (first != last
                 && first != null
                 && last != null
-                && last.getLeft() != first) {
+                && last.getRight() != first) {
             //
             Node<E> node = this.partition(first, last);
             if (node != null) {
                 // Recursively sort elements
-                this.quickSort(node.getLeft(), last);
-                this.quickSort(first,node.getRight());
+                this.quickSort(node.getRight(), last);
+                this.quickSort(first, node.getLeft());
             }
         }
     }
@@ -40,32 +40,35 @@ public class QuickSorter<E> implements Sorter<E> {
     // Get partition node
     public Node<E> partition(Node<E> first, Node<E> last) {
         Node<E> current = first;
-        Node<E> location = first.getRight();
+        //location or pivot
+        Node<E> pivot = first.getLeft();
         E temp = null;
+        //set pivot
         while (current != null && current != last) {
+            var test = this.comparator.compare(current.item, last.item);
             if (this.comparator.compare(current.item, last.item) < 0) {
-                if (location == null) {
-                    location = first;
+                if (pivot == null) {
+                    pivot = first;
                 } else {
-                    location = location.getLeft();
+                    pivot = pivot.getRight();
                 }
-                //swap node values
+               /* //swap node values
                 temp = current.item;
-                current.item = location.item;
-                location.item = temp;
+                current.item = pivot.item;
+                pivot.item = temp;*/
             }
             //visit to next node
-            current = current.getLeft();
+            current = current.getRight();
         }
-        if (location == null) {
-            location = first;
+        if (pivot == null) {
+            pivot = first;
         } else {
-            location = location.getLeft();
+            pivot = pivot.getRight();
         }
         //swap node values
         temp = last.item;
-        last.item = location.item;
-        location.item = temp;
-        return location;
+        last.item = pivot.item;
+        pivot.item = temp;
+        return pivot;
     }
 }

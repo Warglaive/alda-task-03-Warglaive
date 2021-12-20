@@ -40,17 +40,17 @@ public class HeapSorter<E> implements Sorter<E> {
                 firstNode.item = lastNode.item;
                 lastNode.item = aux;
                 //Exchange and delete with firstIndex
-                if (parentNode.getLeft() != null && lastNode.item == parentNode.getLeft().item) {
-                    parentNode.setLeft(null);
+                if (parentNode.getRight() != null && lastNode.item == parentNode.getRight().item) {
+                    parentNode.setRight(null);
 
                 } else {
-                    parentNode.setRight(null);
+                    parentNode.setLeft(null);
                 }
                 return firstNode;
             } else {
-                Node<E> currNode = ExchangeAndDelete(i, lastNode.getLeft(), firstNode, parentNode);
+                Node<E> currNode = ExchangeAndDelete(i, lastNode.getRight(), firstNode, parentNode);
                 if (currNode == null) {
-                    currNode = ExchangeAndDelete(i, lastNode.getRight(), firstNode, parentNode);
+                    currNode = ExchangeAndDelete(i, lastNode.getLeft(), firstNode, parentNode);
                 }
                 return currNode;
             }
@@ -79,19 +79,19 @@ public class HeapSorter<E> implements Sorter<E> {
 
     public void sink(Node<E> parent) {
         //if left is smaller exchange
-        if (parent.getLeft() != null && less(parent.getLeft(), parent)) {
-            exchange(parent, parent.getLeft());
-        }
-        //if right is smaller exchange
         if (parent.getRight() != null && less(parent.getRight(), parent)) {
             exchange(parent, parent.getRight());
-
         }
-        if (parent.getLeft() != null) {
-            sink(parent.getLeft());
+        //if right is smaller exchange
+        if (parent.getLeft() != null && less(parent.getLeft(), parent)) {
+            exchange(parent, parent.getLeft());
+
         }
         if (parent.getRight() != null) {
             sink(parent.getRight());
+        }
+        if (parent.getLeft() != null) {
+            sink(parent.getLeft());
         }
     }
 
@@ -130,14 +130,14 @@ public class HeapSorter<E> implements Sorter<E> {
             Node<E> availableParent = availableParents.get();
             E currItem = queue.get();
             Node<E> leftCurrent = new Node<>(currItem, ++size);
-            availableParent.setLeft(leftCurrent);
+            availableParent.setRight(leftCurrent);
             parentStack.push(availableParent);
             availableParents.put(leftCurrent);
 
             if (!queue.isEmpty()) {
                 E currItemR = queue.get();
                 Node<E> rightCurrent = new Node<>(currItemR, ++size);
-                availableParent.setRight(rightCurrent);
+                availableParent.setLeft(rightCurrent);
                 availableParents.put(rightCurrent);
             }
         }

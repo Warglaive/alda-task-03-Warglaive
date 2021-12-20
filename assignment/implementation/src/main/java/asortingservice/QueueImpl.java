@@ -32,8 +32,8 @@ public class QueueImpl<E> implements Queue<E> {
         } else {
             // Add the new node at the end of queue and change last
             //TODO: debug if lastNode has element and next is proper
-            this.tailNode.setLeft(tempNode);
-            tempNode.setRight(this.tailNode);
+            this.tailNode.setRight(tempNode);
+            tempNode.setLeft(this.tailNode);
             this.tailNode = tempNode;
             //increment size
         }
@@ -55,7 +55,7 @@ public class QueueImpl<E> implements Queue<E> {
         }
         // Store previous start and move start one node ahead
         Node<E> tempNode = this.headNode;
-        this.headNode = this.headNode.getLeft();
+        this.headNode = this.headNode.getRight();
         // If first becomes NULL, then change last also as NULL
         if (this.headNode == null) {
             this.tailNode = null;
@@ -100,7 +100,7 @@ public class QueueImpl<E> implements Queue<E> {
             public E next() {
                 if (!hasNext()) throw new NoSuchElementException();
                 var tempItem = current.item;
-                current = current.getLeft();
+                current = current.getRight();
                 return tempItem;
             }
         };

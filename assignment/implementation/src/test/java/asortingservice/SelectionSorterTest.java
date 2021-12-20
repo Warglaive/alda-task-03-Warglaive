@@ -29,7 +29,6 @@ class SelectionSorterTest {
 
     @Test
     void integerSortTest() {
-        //TODO: Fix Node's references
         Queue<Integer> unsortedQueue = this.factory.createPreferredQueue(SortKind.SELECTION);
         //hardcoded elementsCount value for test purposes
         unsortedQueue = fillUnsorted(5);
@@ -37,7 +36,6 @@ class SelectionSorterTest {
         sortedQueue = (QueueImpl<Integer>) fillSorted(5);
         //sort
         unsortedQueue = this.sorter.sort(unsortedQueue);
-        //TODO:
         for (int i = 0; i < unsortedQueue.size(); i++) {
             assertThat(unsortedQueue.get()).isEqualTo(sortedQueue.get());
         }

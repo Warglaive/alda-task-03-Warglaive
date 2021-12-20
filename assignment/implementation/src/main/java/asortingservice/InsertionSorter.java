@@ -19,17 +19,17 @@ public class InsertionSorter<E> implements Sorter<E> {
         Node<E> back = null;
         while (front != null) {
             //Get next node
-            back = front.getLeft();
-            // Update node value when consecutive nodes are not sort
-            while (back != null && back.getRight() != null
-                    && this.comparator.compare(back.item, back.getRight().item) < 0) {
+            back = front.getRight();
+            // Update node value when consecutive nodes are not sorted
+            while (back != null && back.getLeft() != null
+                    && this.comparator.compare(back.item, back.getLeft().item) < 0) {
                 // Modified node data
-                swapData(back, back.getRight());
+                swapData(back, back.getLeft());
                 // Visit to previous node
-                back = back.getRight();
+                back = back.getLeft();
             }
             // Visit to next node
-            front = front.getLeft();
+            front = front.getRight();
         }
         return queue;
     }

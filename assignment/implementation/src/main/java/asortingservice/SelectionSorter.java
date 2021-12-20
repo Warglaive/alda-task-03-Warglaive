@@ -6,7 +6,7 @@ import sortingservice.Sorter;
 import java.util.Comparator;
 
 public class SelectionSorter<E> implements Sorter<E> {
-    private Comparator<E> comparator;
+    private final Comparator<E> comparator;
 
     SelectionSorter(Comparator<E> comparator) {
         this.comparator = comparator;
@@ -22,7 +22,7 @@ public class SelectionSorter<E> implements Sorter<E> {
         //traverse the list
         while (headNode != null) {
             Node<E> minItemNode = headNode;
-            Node<E> nextNode = headNode.getLeft();
+            Node<E> nextNode = headNode.getRight();
             //Traverse the unsorted sublist
             while (nextNode != null) {
                 //Find which node has the smallest element
@@ -30,22 +30,15 @@ public class SelectionSorter<E> implements Sorter<E> {
                     minItemNode = nextNode;
                 }
                 //go to next node
-                nextNode = nextNode.getLeft();
+                nextNode = nextNode.getRight();
             }
             //swap elements
             E tempItem = headNode.item;
             headNode.item = minItemNode.item;
             minItemNode.item = tempItem;
-            headNode = headNode.getLeft();
+            headNode = headNode.getRight();
         }
 
         return queue;
     }
-
-   /* @Override
-    public int compareTo(E b) {
-        //TODO: MAy be buggy
-        return this.comparator.compare((E) this, b);
-    }*/
-
 }

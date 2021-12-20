@@ -18,7 +18,7 @@ public class Stack<E> {
         }
         size--;
 
-        this.head = this.head.getLeft();
+        this.head = this.head.getRight();
     }
 
     public E peek() {
