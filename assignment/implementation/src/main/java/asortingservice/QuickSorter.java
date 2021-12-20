@@ -52,10 +52,10 @@ public class QuickSorter<E> implements Sorter<E> {
                 } else {
                     pivot = pivot.getRight();
                 }
-               /* //swap node values
+                //swap node values
                 temp = current.item;
                 current.item = pivot.item;
-                pivot.item = temp;*/
+                pivot.item = temp;
             }
             //visit to next node
             current = current.getRight();
