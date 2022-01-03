@@ -45,7 +45,7 @@ public class QuickSorter<E> implements Sorter<E> {
         E temp = null;
         //set pivot
         while (current != null && current != last) {
-            var test = this.comparator.compare(current.item, last.item);
+           // var test = this.comparator.compare(current.item, last.item);
             if (this.comparator.compare(current.item, last.item) < 0) {
                 if (pivot == null) {
                     pivot = first;

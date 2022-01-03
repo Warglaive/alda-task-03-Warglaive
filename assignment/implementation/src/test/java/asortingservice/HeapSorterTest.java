@@ -1,39 +1,34 @@
 package asortingservice;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class HeapSorterTest {
+    private Comparator<Integer> integerComparator;
+
+    @BeforeEach
+    void setUp() {
+        this.integerComparator = new CountingComparator<>(Integer::compareTo);
+    }
 
     @Test
     void sort() {
-        Comparator<Integer> comparator = (Integer a, Integer b) -> {
-            if (a > b) {
-                return 1;
-            }
-            if (Objects.equals(a, b)) {
-                return 0;
-            }
-            return -1;
-        };
-
         List<Integer> newList = new ArrayList<>();
         QueueImpl<Integer> newQueue = new QueueImpl<>();
-        newList.add(4);
-        newList.add(10);
-        newList.add(3);
-        newList.add(5);
-        newList.add(1);
-        for (int a : newList) {
-            newQueue.put(a);
+        for (int i = 0; i < 10; i++) {
+            int randomNum = ThreadLocalRandom.current().nextInt(1, 4 + 1);
+            newQueue.put(randomNum);
         }
 
-        HeapSorter<Integer> HeapSorter = new HeapSorter<>(comparator);
+        HeapSorter<Integer> HeapSorter = new HeapSorter<>(integerComparator);
         QueueImpl<Integer> sorted2 = (QueueImpl<Integer>) HeapSorter.sort(newQueue);
-        newList.sort(comparator);
+        //sort using list sort
+        newList.sort(integerComparator);
 
         newList.forEach((integer) -> assertEquals(integer, sorted2.get()));
 
@@ -43,8 +38,9 @@ public class HeapSorterTest {
         for (int i = 0; i < 1000; i++) {
             list.add(rand.nextInt(200));
         }
-        HeapSorter<Integer> heapSorter = new HeapSorter<>(comparator);
+        HeapSorter<Integer> heapSorter = new HeapSorter<>(integerComparator);
 
+        //empty collections check
         assertEquals(queueImp, heapSorter.sort(queueImp));
 
         // put values in the Queue
@@ -55,8 +51,9 @@ public class HeapSorterTest {
         //sort the queue
         QueueImpl<Integer> sorted = (QueueImpl<Integer>) heapSorter.sort(queueImp);
 
-        list.sort(comparator);
+        list.sort(integerComparator);
 
+        //compare list and queue sorted
         list.forEach((integer) -> {
             assertEquals(integer, sorted.get());
         });
